@@ -236,9 +236,12 @@ export const Insights = () => {
 export const FinalCTA = () => (
   <section id="contact" className="py-20 sm:py-28">
     <div className="container-x">
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-10 sm:p-16 text-white shadow-lift">
-        <div className="absolute inset-0 grid-faint opacity-30" />
-        <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-gold/25 blur-3xl" />
+      <div className="relative overflow-hidden rounded-3xl bg-primary bg-gradient-to-br from-primary via-white/5 to-primary bg-[length:200%_200%] sm:motion-safe:animate-gradient-shift p-10 sm:p-16 text-white shadow-lift">
+        {/* High-end Noise Texture Overlay */}
+        <div className="absolute inset-0 bg-noise opacity-5 mix-blend-overlay pointer-events-none sm:bg-fixed" />
+        
+        <div className="absolute inset-0 grid-faint opacity-30 pointer-events-none" />
+        <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-gold/25 blur-3xl pointer-events-none" />
         <div className="relative max-w-2xl">
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold leading-tight">
             Let's secure <span className="text-gradient-gold">what matters most.</span>
