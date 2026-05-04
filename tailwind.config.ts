@@ -13,8 +13,32 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-hero': 'var(--gradient-hero)',
+        'gradient-gold': 'var(--gradient-gold)',
+        'gradient-soft': 'var(--gradient-soft)',
+      },
+      boxShadow: {
+        soft: 'var(--shadow-soft)',
+        card: 'var(--shadow-card)',
+        glow: 'var(--shadow-glow)',
+        lift: 'var(--shadow-lift)',
+      },
       colors: {
         border: "hsl(var(--border))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          foreground: "hsl(var(--gold-foreground))",
+          soft: "hsl(var(--gold-soft))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
