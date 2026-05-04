@@ -1,4 +1,4 @@
-import { Award, ShieldCheck, Users, HandshakeIcon, HeartPulse, Car, Building2, Shield, Home, Search, GitCompare, Settings2, LifeBuoy, FileCheck, Clock, Lock, ArrowRight } from "lucide-react";
+import { Award, ShieldCheck, Users, Handshake, HeartPulse, Car, Building2, Shield, Home, Search, GitCompare, Settings2, LifeBuoy, FileCheck, Clock, Lock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import advisorImg from "@/assets/feature-advisor.jpg";
 
@@ -7,7 +7,7 @@ export const WhyVamana = () => {
   const points = [
     { icon: Award, title: "Independent Advisory", desc: "We work for you — not insurers. Honest recommendations, every time." },
     { icon: ShieldCheck, title: "IRDAI Licensed", desc: "Fully regulated insurance broker — your policies are in safe hands." },
-    { icon: HandshakeIcon, title: "Claims, Done Right", desc: "End-to-end claim assistance from documentation to disbursal." },
+    { icon: Handshake, title: "Claims, Done Right", desc: "End-to-end claim assistance from documentation to disbursal." },
     { icon: Users, title: "Dedicated Advisors", desc: "One advisor, one number — for life. No call centres, no scripts." },
   ];
   return (
