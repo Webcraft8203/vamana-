@@ -16,7 +16,7 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -24,13 +24,13 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border/60 shadow-soft" : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 bg-background/95 backdrop-blur-md border-b transition-shadow duration-300 ${
+        scrolled ? "border-border shadow-soft" : "border-border/60"
       }`}
     >
-      <nav className="container-x flex h-16 sm:h-20 items-center justify-between">
+      <nav className="container-x flex h-16 sm:h-18 items-center justify-between">
         <a href="#" className="flex items-center gap-2 shrink-0">
-          <img src={logo} alt="Vamana Insurance Broking" className="h-9 sm:h-11 w-auto" />
+          <img src={logo} alt="Vamana Insurance Broking" className="h-9 sm:h-10 w-auto" />
         </a>
 
         <ul className="hidden lg:flex items-center gap-9">
@@ -38,7 +38,7 @@ export const Navbar = () => {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                className="text-sm font-medium text-foreground/75 hover:text-primary transition-colors"
               >
                 {l.label}
               </a>
@@ -46,8 +46,8 @@ export const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+910000000000" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-primary">
+        <div className="hidden lg:flex items-center gap-4">
+          <a href="tel:+910000000000" className="flex items-center gap-2 text-sm font-medium text-foreground/75 hover:text-primary">
             <Phone className="h-4 w-4 text-gold" /> +91 00000 00000
           </a>
           <Button variant="gold" size="sm" asChild>
