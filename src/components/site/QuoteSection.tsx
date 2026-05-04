@@ -18,8 +18,19 @@ export const QuoteSection = () => {
   };
 
   return (
-    <section id="quote" className="py-20 sm:py-24 bg-gradient-soft border-t border-border/60">
-      <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="quote" className="relative z-0 overflow-hidden py-20 sm:py-24 bg-gradient-soft border-t border-border/60">
+      {/* Premium Animated Background */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        {/* Floating gradient blobs */}
+        <div className="absolute -top-[10%] -right-[5%] w-[400px] h-[400px] rounded-full bg-gold/10 blur-[120px] sm:motion-safe:animate-float-slow" />
+        <div className="absolute -bottom-[10%] -left-[10%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[140px] sm:motion-safe:animate-pulse-glow" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[30%] left-[20%] w-[300px] h-[300px] rounded-full bg-secondary/20 blur-[100px] sm:motion-safe:animate-float-slow" style={{ animationDelay: '4s' }} />
+        
+        {/* Soft overlay to blend blobs smoothly into the background for depth */}
+        <div className="absolute inset-0 bg-background/20" />
+      </div>
+
+      <div className="container-x relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* LEFT */}
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Get a free quote</p>

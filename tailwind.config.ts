@@ -125,6 +125,10 @@ export default {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(100%)" },
         },
+      "float-slow": {
+        "0%, 100%": { transform: "translateY(0)" },
+        "50%": { transform: "translateY(-30px)" },
+      },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -134,6 +138,7 @@ export default {
         "logo-intro": "logo-intro 0.8s ease-out forwards",
         "fade-in-up": "fade-in-up 0.8s ease-out both",
         "loading-line": "loading-line 1.5s ease-in-out infinite",
+      "float-slow": "float-slow 8s ease-in-out infinite",
       },
     },
   },
