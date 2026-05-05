@@ -4,6 +4,7 @@ import logo from "@/assets/vamana-logo.png";
 import { Button } from "@/components/ui/button";
 
 const links = [
+  { label: "About", href: "#about" },
   { label: "Why Vamana", href: "#why" },
   { label: "Services", href: "#services" },
   { label: "How it works", href: "#how" },
