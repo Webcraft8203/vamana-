@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Award, ShieldCheck, Users, Handshake, HeartPulse, Car, Plane, Building2, Shield, Anchor, Truck, Wrench, Factory, Boxes, Target, Eye, Sparkles, Scale, Headphones, ArrowRight, FileCheck, Clock, Lock, Mail, Phone, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/site/Modal";
@@ -14,41 +14,147 @@ export const About = () => {
     { icon: Handshake, title: "Long-term Support", desc: "Lifetime advisor — from onboarding to claim disbursal." },
   ];
   return (
-    <section id="about" className="py-20 sm:py-28">
-      <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div className="relative">
-          <div className="rounded-3xl overflow-hidden shadow-lift ring-1 ring-border">
-            <img src={aboutImg} alt="Vamana team in consultation" className="w-full h-[460px] object-cover" loading="lazy" width={1024} height={1024} />
-          </div>
-          <div className="hidden sm:grid grid-cols-2 gap-3 absolute -bottom-6 left-6 right-6">
-            <div className="bg-card rounded-2xl p-5 shadow-card border border-border">
-              <p className="font-display font-extrabold text-3xl text-primary">20+</p>
-              <p className="text-xs text-muted-foreground mt-1">Years of industry experience</p>
+    <section id="about" className="relative py-24 sm:py-32 overflow-hidden bg-white">
+      {/* Subtle Premium Background Enhancements */}
+      <div className="absolute inset-0 grid-faint opacity-30 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container-x relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+        
+        {/* LEFT: Enhanced Image */}
+        <div className="relative h-full w-full max-w-lg mx-auto lg:max-w-none animate-fade-up" style={{ animationDelay: "0ms" }}>
+          {/* Soft Glow Behind Image */}
+          <div className="absolute inset-0 bg-gold/15 blur-[80px] rounded-full transform -translate-x-4 translate-y-4" />
+          
+          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-border group h-full">
+            <img src={aboutImg} alt="Vamana team in consultation" className="w-full h-[500px] lg:h-full min-h-[500px] lg:min-h-[600px] object-cover transition-all duration-700 group-hover:scale-105 group-hover:rotate-1" loading="lazy" width={1024} height={1024} />
+            
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent pointer-events-none opacity-90" />
+            
+            {/* Floating Info Card 1 (Bottom Left) */}
+            <div className="absolute bottom-6 left-6 right-6 sm:right-auto bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] pointer-events-none transform transition-transform duration-500 group-hover:-translate-y-2">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold border border-gold/30">
+                  <ShieldCheck className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="font-display font-bold text-lg leading-tight">IRDAI Regulated</p>
+                  <p className="text-xs text-white/80 font-medium mt-0.5">100% compliant & transparent</p>
+                </div>
+              </div>
             </div>
-            <div className="bg-card rounded-2xl p-5 shadow-card border border-border">
-              <p className="font-display font-extrabold text-3xl text-primary">100+</p>
-              <p className="text-xs text-muted-foreground mt-1">Years of combined team knowledge</p>
+
+            {/* Floating Info Card 2 (Top Right) */}
+            <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-primary shadow-xl pointer-events-none transform transition-transform duration-500 group-hover:translate-y-2 group-hover:-translate-x-2 hidden sm:block">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
+                  <Users className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="font-display font-bold text-base leading-tight">10,000+</p>
+                  <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mt-0.5">Clients Served</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">About Vamana</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold leading-tight text-primary">
-            Independent insurance advisory, built for the long run.
-          </h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Vamana Insurance Broking is an IRDAI-licensed broker helping individuals, families and businesses make informed insurance decisions. We combine deep domain expertise with a client-first approach — so you always know what you're buying and why.
-          </p>
-          <div className="mt-8 grid sm:grid-cols-2 gap-4">
-            {features.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="lift bg-card rounded-2xl border border-border p-5 shadow-soft">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-gold">
+
+        {/* RIGHT: Structured Content */}
+        <div className="flex flex-col">
+          <div className="animate-fade-up" style={{ animationDelay: "100ms" }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">About Vamana</p>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold leading-tight text-primary">
+              Independent insurance advisory, built for the long run.
+            </h2>
+          </div>
+          
+          {/* Trust Pills */}
+          <div className="mt-6 flex flex-wrap items-center gap-2 animate-fade-up" style={{ animationDelay: "200ms" }}>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/60 border border-border/50 px-3 py-1.5 text-xs font-semibold text-primary shadow-sm">
+              <ShieldCheck className="h-3.5 w-3.5 text-gold" /> IRDAI Licensed Broker
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/60 border border-border/50 px-3 py-1.5 text-xs font-semibold text-primary shadow-sm">
+              <Briefcase className="h-3.5 w-3.5 text-gold" /> 100+ Years Experience
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/60 border border-border/50 px-3 py-1.5 text-xs font-semibold text-primary shadow-sm">
+              <Handshake className="h-3.5 w-3.5 text-gold" /> Client-First Advisory
+            </span>
+          </div>
+          
+          <div className="mt-8 space-y-5 max-w-xl animate-fade-up" style={{ animationDelay: "300ms" }}>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              Vamana Insurance Broking is built on over two decades of experience in customer-first organizations. We exist to protect what matters most — your people, your business, and your future.
+            </p>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              We don't just sell policies. We partner with you to design the right insurance strategy, ensuring your risks are covered with clarity, transparency, and zero pressure.
+            </p>
+          </div>
+
+          {/* CTAs */}
+          <div className="mt-8 flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: "400ms" }}>
+            <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
+              <a href="#contact">Talk to an Advisor</a>
+            </Button>
+            <Button variant="outline" size="lg" asChild className="hover:-translate-y-1 hover:bg-secondary/50 hover:shadow-md transition-all duration-300">
+              <a href="#services">Learn More</a>
+            </Button>
+          </div>
+
+          {/* Stats Row */}
+          <div className="mt-12 grid sm:grid-cols-2 gap-5 animate-fade-up" style={{ animationDelay: "500ms" }}>
+            <div className="bg-white rounded-2xl border border-border/60 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex items-center gap-4 group">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors duration-300">
+                <Briefcase className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-display font-extrabold text-2xl sm:text-3xl text-primary">20+</p>
+                <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">Years Experience</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl border border-border/60 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex items-center gap-4 group">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors duration-300">
+                <Users className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-display font-extrabold text-2xl sm:text-3xl text-primary">100+</p>
+                <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">Combined Expertise</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="my-12 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent animate-fade-up" style={{ animationDelay: "600ms" }} />
+
+          {/* Feature Cards */}
+          <div className="grid sm:grid-cols-2 gap-5">
+            {features.map(({ icon: Icon, title, desc }, i) => {
+              const isHighlighted = title === "Trust";
+              return (
+              <div 
+                key={title} 
+                className={`rounded-2xl border p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group animate-fade-up ${
+                  isHighlighted 
+                    ? "bg-primary border-primary text-white" 
+                    : "bg-white border-border/60 text-primary"
+                }`}
+                style={{ animationDelay: `${700 + (i * 100)}ms` }}
+              >
+                <div className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300 ${
+                  isHighlighted 
+                    ? "bg-white/10 text-gold group-hover:bg-white/20" 
+                    : "bg-secondary text-primary group-hover:bg-primary group-hover:text-gold"
+                }`}>
                   <Icon className="h-5 w-5" />
                 </div>
-                <h4 className="mt-4 font-display font-bold text-primary">{title}</h4>
-                <p className="text-sm text-muted-foreground mt-1">{desc}</p>
+                <h4 className={`mt-4 font-display font-bold text-lg ${isHighlighted ? "text-white" : "text-primary"}`}>
+                  {title}
+                </h4>
+                <p className={`mt-1.5 text-sm leading-relaxed ${isHighlighted ? "text-white/80" : "text-muted-foreground"}`}>
+                  {desc}
+                </p>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       </div>
@@ -59,28 +165,59 @@ export const About = () => {
 /* ---------- VISION & MISSION ---------- */
 export const VisionMission = () => {
   const cards = [
-    { icon: Eye, eyebrow: "Our Vision", title: "To be India's most trusted insurance advisor.", desc: "We aim to redefine insurance broking with transparency, technology and lifelong client relationships — so every Indian family and business is properly protected." },
-    { icon: Target, eyebrow: "Our Mission", title: "Make insurance simple, honest and effective.", desc: "We help clients understand risk, choose the right cover and get claims paid — with zero jargon, zero pressure and full accountability at every step." },
+    { icon: Eye, eyebrow: "Our Vision", title: <>To become <span className="text-gradient-gold">India's</span> most trusted insurance advisor.</>, desc: "We aim to set the standard for transparency, trust, and long-term relationships — helping every individual and business stay truly protected." },
+    { icon: Target, eyebrow: "Our Mission", title: "Make insurance simple, honest, and reliable.", desc: "We help clients understand risks, choose the right coverage, and get claims settled smoothly — with complete transparency and zero pressure." },
   ];
   return (
-    <section className="py-20 sm:py-28 bg-gradient-soft">
-      <div className="container-x">
-        <div className="max-w-2xl">
+    <section className="relative py-24 sm:py-32 bg-secondary/20 overflow-hidden">
+      {/* Subtle Premium Background Enhancements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.05)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 grid-faint opacity-[0.06] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="container-x relative z-10">
+        <div className="max-w-2xl animate-fade-up" style={{ animationDelay: "0ms" }}>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Purpose</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold text-primary leading-tight">What drives us, every day.</h2>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-primary leading-tight">What drives us, every day.</h2>
+          <div className="mt-6 h-1 w-20 bg-gradient-to-r from-gold to-transparent rounded-full" />
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            We don’t just sell insurance — we build long-term trust.
+          </p>
         </div>
-        <div className="mt-12 grid md:grid-cols-2 gap-6">
-          {cards.map(({ icon: Icon, eyebrow, title, desc }) => (
-            <div key={eyebrow} className="lift group relative overflow-hidden bg-card rounded-3xl border border-border p-8 sm:p-10 shadow-soft">
-              <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-gold/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-gold">
+        
+        <div className="mt-12 grid md:grid-cols-2 gap-6 lg:gap-8">
+          {cards.map(({ icon: Icon, eyebrow, title, desc }, i) => {
+            const isHighlighted = i === 1; // Mission card highlighted
+            return (
+            <div 
+              key={eyebrow} 
+              className={`group relative overflow-hidden rounded-[2rem] border p-10 sm:p-12 animate-fade-up transition-all duration-500 hover:-translate-y-2 ${
+                isHighlighted 
+                  ? "bg-primary border-gold/20 text-white shadow-xl hover:shadow-[0_20px_40px_rgba(212,175,55,0.15)]" 
+                  : "bg-gradient-to-br from-white to-secondary/30 border-border/60 text-primary shadow-sm hover:shadow-xl hover:border-gold/30 hover:shadow-gold/5"
+              }`}
+              style={{ animationDelay: `${150 + (i * 150)}ms` }}
+            >
+              <div className={`absolute -top-16 -right-16 h-48 w-48 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${isHighlighted ? "bg-white/10" : "bg-gold/15"}`} />
+              
+              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 ${
+                isHighlighted ? "bg-white/10 text-gold group-hover:bg-gold/20" : "bg-white border border-border shadow-sm text-primary group-hover:bg-primary group-hover:text-gold"
+              }`}>
                 <Icon className="h-7 w-7" />
               </div>
-              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold">{eyebrow}</p>
-              <h3 className="mt-2 font-display font-extrabold text-2xl text-primary leading-snug">{title}</h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-gold">{eyebrow}</p>
+              <h3 className={`mt-3 font-display font-extrabold text-2xl lg:text-3xl leading-snug ${isHighlighted ? "text-white" : "text-primary"}`}>{title}</h3>
+              <p className={`mt-4 leading-relaxed text-base sm:text-lg ${isHighlighted ? "text-white/80" : "text-muted-foreground"}`}>{desc}</p>
             </div>
-          ))}
+          )})}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 flex justify-center animate-fade-up" style={{ animationDelay: "500ms" }}>
+          <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
+            <a href="#contact">Talk to an Advisor</a>
+          </Button>
         </div>
       </div>
     </section>
@@ -89,6 +226,17 @@ export const VisionMission = () => {
 
 /* ---------- WHY VAMANA ---------- */
 export const WhyVamana = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    if (scrollWidth <= clientWidth) return;
+    const index = Math.round((scrollLeft / (scrollWidth - clientWidth)) * (points.length - 1));
+    setActiveIndex(index || 0);
+  };
+
   const points = [
     { icon: Scale, title: "Independent Advisory", desc: "We work for you — not insurers. Honest, unbiased recommendations every time." },
     { icon: Sparkles, title: "Expert Consultation", desc: "Decades of underwriting and risk-advisory experience on every conversation." },
@@ -96,24 +244,62 @@ export const WhyVamana = () => {
     { icon: Headphones, title: "Strong Customer Support", desc: "A dedicated advisor on call — no scripts, no IVRs, no wait times." },
   ];
   return (
-    <section id="why" className="py-20 sm:py-28">
-      <div className="container-x">
-        <SectionHeader
-          eyebrow="Why Vamana"
-          title="Insurance, simplified — and on your side."
-          subtitle="Four reasons clients trust us with crores in cover."
-        />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {points.map(({ icon: Icon, title, desc }, i) => (
-            <div key={title} className="lift bg-card rounded-2xl border border-border p-7 shadow-soft animate-fade-up h-full" style={{ animationDelay: `${i * 80}ms` }}>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-gold">
-                <Icon className="h-6 w-6" />
+    <section id="why" className="relative py-24 sm:py-32 bg-secondary/10 overflow-hidden">
+      {/* Subtle Premium Background Enhancements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(212,175,55,0.08)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 grid-faint opacity-[0.05] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container-x relative z-10">
+        {/* Heading Area with Gold Divider */}
+        <div className="max-w-2xl animate-fade-up" style={{ animationDelay: "0ms" }}>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Why Vamana</p>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-primary leading-tight">
+            Insurance, simplified — and on your side.
+          </h2>
+          <div className="mt-6 h-1 w-20 bg-gradient-to-r from-gold to-transparent rounded-full" />
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            Four reasons clients trust us with crores in cover. We bring clarity, expertise, and strong advocacy to your insurance portfolio.
+          </p>
+        </div>
+
+        {/* Premium Interactive Grid Cards / Mobile Slider */}
+        <div className="relative mt-12 sm:mt-16 -mx-4 sm:mx-0">
+          {/* Gradient Fade Edges (Mobile) */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 sm:hidden pointer-events-none opacity-80" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 sm:hidden pointer-events-none opacity-80" />
+
+          <div 
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory sm:snap-none px-4 sm:px-0 pb-8 sm:pb-0 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
+            {points.map(({ icon: Icon, title, desc }, i) => (
+              <div 
+                key={title} 
+                className="w-[85vw] min-w-[85vw] sm:w-auto sm:min-w-0 shrink-0 snap-center bg-white/80 backdrop-blur-md rounded-[2rem] border border-border/60 p-8 shadow-sm hover:shadow-xl hover:shadow-gold/10 hover:border-gold/30 hover:-translate-y-2 transition-all duration-500 animate-fade-up h-full group" 
+                style={{ animationDelay: `${150 + (i * 150)}ms` }}
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                  <Icon className="h-7 w-7" />
+                </div>
+                <h3 className="mt-8 font-display font-bold text-xl text-primary transition-colors duration-300">{title}</h3>
+                <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground">{desc}</p>
               </div>
-              <h3 className="mt-5 font-display font-bold text-lg text-primary">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-            </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile Pagination Dots */}
+        <div className="mt-2 flex items-center justify-center gap-2 sm:hidden">
+          {points.map((_, i) => (
+            <div 
+              key={i} 
+              className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-6 bg-gold' : 'w-2 bg-primary/20'}`}
+            />
           ))}
         </div>
+
       </div>
     </section>
   );
@@ -180,6 +366,23 @@ const ServiceCard = ({ icon: Icon, title, desc, delay }: any) => (
 
 /* ---------- HOW IT WORKS ---------- */
 export const HowItWorks = () => {
+  const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   const steps = [
     { title: "Discover", desc: "Tell us about you. We assess your real risks — not generic templates." },
     { title: "Compare", desc: "We benchmark plans across top insurers, side-by-side, jargon-free." },
@@ -187,17 +390,50 @@ export const HowItWorks = () => {
     { title: "Claim Support", desc: "We handle paperwork & follow-ups, end-to-end, so you don't have to." },
   ];
   return (
-    <section id="how" className="py-20 sm:py-28 bg-primary text-white relative overflow-hidden">
-      <div className="absolute inset-0 grid-faint opacity-30 pointer-events-none" />
-      <div className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
-      <div className="container-x relative">
-        <SectionHeader dark eyebrow="How it works" title="Four steps. Zero confusion." subtitle="A clear, structured process — built around transparency at every stage." />
+    <section id="how" ref={ref} className="py-24 sm:py-32 bg-primary text-white relative overflow-hidden">
+      <style>{`
+        @keyframes soft-pan {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(-10%, 5%) scale(1.05); }
+        }
+        .animate-soft-pan {
+          animation: soft-pan 15s ease-in-out infinite;
+          will-change: transform;
+        }
+        @keyframes number-scale-in {
+          0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-number-scale {
+          animation: number-scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
+
+      {/* Subtle Premium Background Animation */}
+      <div className="absolute inset-0 grid-faint opacity-[0.03] pointer-events-none" />
+      <div className="absolute -top-32 right-1/4 h-[500px] w-[500px] rounded-full bg-gold/10 blur-[120px] animate-soft-pan pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 h-[600px] w-[600px] rounded-full bg-blue-500/10 blur-[150px] animate-soft-pan pointer-events-none" style={{ animationDelay: "-7.5s" }} />
+      
+      <div className="container-x relative z-10">
+        <div className={`transition-all duration-1000 transform ease-out will-change-transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <SectionHeader dark eyebrow="How it works" title="Four steps. Zero confusion." subtitle="A clear, structured process — built around transparency at every stage." />
+        </div>
+        
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((s, i) => (
-            <div key={s.title} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-7 animate-fade-up" style={{ animationDelay: `${i * 100}ms` }}>
-              <span className="font-display text-3xl font-extrabold text-gold">0{i + 1}</span>
-              <h3 className="mt-4 font-display font-bold text-xl">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">{s.desc}</p>
+            <div 
+              key={s.title} 
+              className={`group relative rounded-[2rem] border border-white/5 bg-white/[0.03] backdrop-blur-xl p-8 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:border-white/20 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] hover:bg-white/10 will-change-transform ${inView ? 'animate-fade-up' : 'opacity-0'}`} 
+              style={{ animationDelay: inView ? `${i * 150}ms` : '0ms', animationFillMode: 'forwards' }}
+            >
+              <span 
+                className={`inline-block font-display text-4xl font-extrabold text-gold/60 transition-all duration-300 group-hover:text-gold group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(212,175,55,0.5)] ${inView ? 'animate-number-scale' : 'opacity-0'}`}
+                style={{ animationDelay: inView ? `${150 + (i * 150)}ms` : '0ms', animationFillMode: 'forwards' }}
+              >
+                0{i + 1}
+              </span>
+              <h3 className="mt-6 font-display font-bold text-xl text-white/90 group-hover:text-white transition-colors">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-white/60 group-hover:text-white/80 transition-colors">{s.desc}</p>
             </div>
           ))}
         </div>
@@ -216,28 +452,53 @@ export const FeatureHighlight = () => {
   return (
     <section className="py-20 sm:py-28">
       <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div className="relative order-2 lg:order-1">
-          <div className="rounded-3xl overflow-hidden shadow-lift ring-1 ring-border">
-            <img src={advisorImg} alt="Vamana advisor consulting client" className="w-full h-[480px] object-cover" loading="lazy" width={1024} height={1024} />
+        
+        {/* LEFT: Enhanced Image */}
+        <div className="relative order-2 lg:order-1 h-full">
+          <div className="relative rounded-3xl overflow-hidden shadow-lift ring-1 ring-border group h-full">
+            <img src={advisorImg} alt="Vamana advisor consulting client" className="w-full h-[500px] lg:h-full min-h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={1024} height={1024} />
+            
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/10 to-transparent pointer-events-none" />
+            
+            {/* Floating Info Card */}
+            <div className="absolute bottom-6 left-6 right-6 sm:right-auto bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl text-white shadow-2xl pointer-events-none">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold border border-gold/30">
+                  <Headphones className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="font-display font-bold text-lg leading-tight">Dedicated Advisor</p>
+                  <p className="text-xs text-white/75 font-medium mt-0.5">Direct access to real experts</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        
+        {/* RIGHT: Structured Content */}
         <div className="order-1 lg:order-2">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">The Vamana difference</p>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold leading-tight text-primary">
             A real advisor — not a chatbot, not a call centre.
           </h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Every client gets a dedicated advisor who knows your portfolio, your family, and your business. The same person who sells you the policy is the one who fights for your claim.
-          </p>
-          <div className="mt-8 space-y-5">
+          <div className="mt-8 space-y-5 max-w-xl">
+            <p className="text-muted-foreground leading-relaxed">
+              Every client gets a dedicated advisor who knows your portfolio, your family, and your business. The same person who sells you the policy is the one who fights for your claim.
+            </p>
+          </div>
+          
+          <hr className="my-10 border-border/60" />
+          
+          <div className="space-y-4">
             {items.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="flex gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary">
+              <div key={title} className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 group">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-primary">{title}</h4>
-                  <p className="text-sm text-muted-foreground mt-0.5">{desc}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{desc}</p>
                 </div>
               </div>
             ))}
