@@ -35,10 +35,10 @@ export const Hero = () => {
           <div className="animate-fade-up delay-200 mt-10">
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
               <Button variant="gold" size="xl" asChild className="w-full sm:w-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                <a href="#quote">Get Free Consultation</a>
+                <a href="#contact">Get Free Consultation</a>
               </Button>
               <Button variant="outlineLight" size="xl" asChild className="w-full sm:w-auto transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-lg">
-                <a href="#quote">Talk to an Advisor</a>
+                <a href="#contact">Talk to an Advisor</a>
               </Button>
             </div>
             {/* CTA Microcopy */}

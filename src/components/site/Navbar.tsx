@@ -4,6 +4,7 @@ import logo from "@/assets/vamana-logo.png";
 import { Button } from "@/components/ui/button";
 
 const links = [
+  { label: "About", href: "#about" },
   { label: "Why Vamana", href: "#why" },
   { label: "Services", href: "#services" },
   { label: "How it works", href: "#how" },
@@ -51,7 +52,7 @@ export const Navbar = () => {
             <Phone className="h-4 w-4 text-gold" /> +91 00000 00000
           </a>
           <Button variant="gold" size="sm" asChild className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-            <a href="#quote">Get Free Quote</a>
+            <a href="#contact">Get Free Quote</a>
           </Button>
         </div>
 
@@ -78,7 +79,7 @@ export const Navbar = () => {
               </a>
             ))}
             <Button variant="gold" className="mt-4 w-full" asChild>
-              <a href="#quote" onClick={() => setOpen(false)}>Get Free Quote</a>
+              <a href="#contact" onClick={() => setOpen(false)}>Get Free Quote</a>
             </Button>
           </div>
         </div>
