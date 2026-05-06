@@ -1,10 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Scale, Wallet, Headphones, CheckCircle2, ChevronLeft, ChevronRight, FileText, TrendingUp } from "lucide-react";
-import heroImg from "@/assets/feature-advisor.jpg";
-import honestImg from "@/assets/hero-honest.jpg";
-import expertsImg from "@/assets/hero-experts.jpg";
-import claimsImg from "@/assets/hero-claims.jpg";
 
 const trustFeatures = [
   { icon: ShieldCheck, label: "IRDAI Licensed Insurance Broker" },
@@ -25,47 +21,58 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    badge: "IRDAI Licensed Broker",
+    badge: "Corporate Risk Advisory",
     title: (
-      <>Protecting your <span className="text-gradient-gold">wealth</span>. Not just your risks.</>
+      <>Protecting your <span className="text-gradient-gold">business continuity</span> against global risks.</>
     ),
-    subtitle: "We help you choose the right cover with complete clarity and zero pressure.",
-    image: heroImg,
-    alt: "Professional advisor consulting a client",
+    subtitle: "Tailored corporate insurance solutions designed to safeguard your enterprise, assets, and people.",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+    alt: "Business professionals in a corporate meeting",
     cta1: "Get Expert Advice",
-    cta2: "Talk to an Advisor",
+    cta2: "Explore Solutions",
   },
   {
-    badge: "Zero Hidden Clauses",
+    badge: "Construction & Infrastructure",
     title: (
-      <>Honest insurance advice without the <span className="text-gradient-gold">surprises</span>.</>
+      <>Comprehensive cover for <span className="text-gradient-gold">mega-projects</span> and contractors.</>
     ),
-    subtitle: "Every clause explained. Every exclusion disclosed. Know exactly what you are buying.",
-    image: honestImg,
-    alt: "Advisor explaining policy documents to a client",
-    cta1: "Compare Policies",
-    cta2: "See Our Process",
+    subtitle: "From Contractor's All-Risk (CAR) to project delay protection, we cover every structural phase.",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
+    alt: "Construction site and engineers",
+    cta1: "View Project Cover",
+    cta2: "Consult an Expert",
   },
   {
-    badge: "100+ Years Expertise",
+    badge: "Marine & Logistics",
     title: (
-      <>Guided by experts who understand complex <span className="text-gradient-gold">risks</span>.</>
+      <>Securing your <span className="text-gradient-gold">cargo</span> across every ocean and transit route.</>
     ),
-    subtitle: "A senior advisory team navigating policies and claims for individuals and corporates.",
-    image: expertsImg,
-    alt: "Senior advisor shaking hands with a client",
-    cta1: "Meet the Team",
-    cta2: "Read Insights",
+    subtitle: "End-to-end marine transit, hull, and import-export coverage for frictionless global trade.",
+    image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1200&q=80",
+    alt: "Cargo containers at a busy shipping port",
+    cta1: "Secure Your Transit",
+    cta2: "Marine Insurance",
+  },
+  {
+    badge: "Industrial Insurance",
+    title: (
+      <>Shielding heavy <span className="text-gradient-gold">machinery</span> and factory operations.</>
+    ),
+    subtitle: "Robust property, fire, and machinery breakdown cover to keep your plants running without interruption.",
+    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1200&q=80",
+    alt: "Engineers inspecting industrial machinery",
+    cta1: "Protect Your Plant",
+    cta2: "Industrial Cover",
   },
   {
     badge: "End-to-End Claim Support",
     title: (
       <>We stand with you during <span className="text-gradient-gold">claims</span>. Not just purchase.</>
     ),
-    subtitle: "From documentation to insurer follow-ups, our dedicated team handles the heavy lifting.",
-    image: claimsImg,
+    subtitle: "From documentation to insurer follow-ups, our dedicated team handles the heavy lifting and complex paperwork.",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
     alt: "Support agent assisting a client with claims",
-    cta1: "View Claims Support",
+    cta1: "Our Claim Process",
     cta2: "Contact Helpdesk",
   },
 ];
@@ -73,6 +80,7 @@ const slides: Slide[] = [
 export const Hero = () => {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const timer = useRef<number | null>(null);
 
   useEffect(() => {
@@ -85,12 +93,20 @@ export const Hero = () => {
 
   const goTo = (i: number) => setIndex((i + slides.length) % slides.length);
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (window.innerWidth < 1024) return; // Parallax only on desktop
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    setMousePos({ x, y });
+  };
+
   return (
     <section
       /* 2. FULL-SCREEN HERO & 1. FIX TOP SPACING: min-h-[100dvh] + flex column structure to center content properly */
       className="relative z-0 overflow-hidden bg-primary text-white min-h-[100dvh] flex flex-col pt-[80px]"
       onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseLeave={() => { setPaused(false); setMousePos({ x: 0, y: 0 }); }}
+      onMouseMove={handleMouseMove}
     >
       {/* Global Animation Styles */}
       <style>{`
@@ -110,12 +126,20 @@ export const Hero = () => {
           animation: hero-fade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes hero-image {
-          from { opacity: 0; transform: scale(1.02); }
-          to { opacity: 1; transform: scale(1); }
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .animate-hero-image {
           opacity: 0;
           animation: hero-image 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes image-pan {
+          0% { transform: scale(1.02); }
+          100% { transform: scale(1.12); }
+        }
+        .animate-image-pan {
+          animation: image-pan 20s ease-in-out infinite alternate;
+          will-change: transform;
         }
         /* 3. BACKGROUND ANIMATION: Floating blobs keyframes */
         @keyframes blob {
@@ -238,9 +262,9 @@ export const Hero = () => {
       <div className="container-x relative flex-1 flex flex-col justify-center py-12 lg:py-20">
         <div className="relative w-full">
           {/* PERFORMANCE: Render ONLY the active slide. Key remount triggers smooth CSS entry animations */}
-          <div key={index} className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+          <div key={index} className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
             {/* LEFT */}
-            <div className="max-w-[580px] lg:max-w-none lg:pr-8">
+            <div className="max-w-[580px] lg:max-w-none lg:pr-8 order-2 lg:order-1">
               <div className="animate-hero-fade" style={{ animationDelay: "0ms" }}>
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-widest font-semibold text-white/80 backdrop-blur-sm mb-6">
                   <ShieldCheck className="h-3 w-3 text-gold" />
@@ -276,18 +300,24 @@ export const Hero = () => {
             </div>
 
             {/* RIGHT */}
-            <div className="hidden lg:block relative w-full h-full animate-hero-image">
-              <div className="relative rounded-2xl overflow-hidden border border-white/5 aspect-[4/3] w-full shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-all duration-700 hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(212,175,55,0.1)] group/image">
+            <div 
+              className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[4/3] animate-hero-image order-1 lg:order-2"
+              style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)`, transition: 'transform 0.4s ease-out' }}
+            >
+              <div className="absolute inset-0 bg-gold/15 blur-[100px] rounded-full transform translate-x-8 -translate-y-8" />
+              
+              <div className="relative rounded-[24px] overflow-hidden border border-white/10 w-full h-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
                 <img
                   src={slides[index].image}
                   alt={slides[index].alt}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover/image:scale-[1.03]"
+                  className="w-full h-full object-cover object-center animate-image-pan"
                   width={1024}
                   height={768}
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/80 via-transparent to-white/5 mix-blend-multiply pointer-events-none" />
-                <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl pointer-events-none" />
+                <div className="absolute inset-0 bg-primary/30 mix-blend-multiply pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.6)_100%)] pointer-events-none" />
+                <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] rounded-[24px] pointer-events-none" />
               </div>
             </div>
           </div>
