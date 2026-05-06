@@ -127,6 +127,7 @@ export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: S
         </section>
       </main>
       <Footer />
+      <FloatingActions />
     </div>
   );
 };
