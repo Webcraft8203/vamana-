@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, ShieldCheck, Eye, Headphones, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Sections";
+import { FloatingActions } from "@/components/site/FloatingActions";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
@@ -126,6 +127,7 @@ export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: S
         </section>
       </main>
       <Footer />
+      <FloatingActions />
     </div>
   );
 };

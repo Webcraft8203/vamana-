@@ -3,6 +3,7 @@ import { Preloader } from "@/components/site/Preloader";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { About, VisionMission, WhyVamana, Services, HowItWorks, FeatureHighlight, Insights, FinalCTA, Footer } from "@/components/site/Sections";
+import { FloatingActions } from "@/components/site/FloatingActions";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -41,6 +42,7 @@ const Index = () => {
           <FinalCTA />
         </main>
         <Footer />
+        <FloatingActions />
       </div>
     </>
   );
