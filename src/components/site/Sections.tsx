@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Award, ShieldCheck, Users, Handshake, HeartPulse, Car, Plane, Building2, Shield, Anchor, Truck, Wrench, Factory, Boxes, Target, Eye, Sparkles, Scale, Headphones, ArrowRight, FileCheck, Clock, Lock, Mail, Phone, Briefcase } from "lucide-react";
+import { Award, ShieldCheck, Users, Handshake, HeartPulse, Car, Plane, Building2, Shield, Anchor, Truck, Wrench, Factory, Boxes, Target, Eye, Sparkles, Scale, Headphones, ArrowRight, FileCheck, Clock, Lock, Mail, Phone, Briefcase, X, CheckCircle2, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/site/Modal";
 import advisorImg from "@/assets/feature-advisor.jpg";
@@ -307,62 +307,289 @@ export const WhyVamana = () => {
 
 /* ---------- SERVICES ---------- */
 export const Services = () => {
+  const [activeService, setActiveService] = useState<any>(null);
+
   const corporate = [
-    { icon: Factory, title: "Industrial", desc: "Property, fire & business interruption cover for plants and warehouses." },
-    { icon: Wrench, title: "Engineering", desc: "Contractor's all-risk, erection all-risk and equipment cover." },
-    { icon: Anchor, title: "Marine", desc: "Cargo, hull and transit insurance across import, export and inland routes." },
-    { icon: Truck, title: "Motor Fleet", desc: "Comprehensive fleet cover for commercial vehicles and logistics." },
-    { icon: Shield, title: "Liability", desc: "Professional indemnity, D&O, cyber and public liability cover." },
-    { icon: Boxes, title: "Other Products", desc: "Group health, workmen comp and bespoke corporate risk solutions." },
+    { 
+      icon: Factory, 
+      title: "Industrial", 
+      desc: "Property, fire & business interruption cover for plants and warehouses.",
+      features: ["Fire & Property Protection", "Machinery Breakdown Cover", "Business Interruption Cover", "Risk Assessment Support", "Claim Assistance"]
+    },
+    { 
+      icon: Wrench, 
+      title: "Engineering", 
+      desc: "Contractor's all-risk, erection all-risk and equipment cover.",
+      features: ["Contractor's All-Risk (CAR)", "Erection All-Risk (EAR)", "Contractor's Plant & Machinery", "Third-Party Liability Coverage", "Project Delay Protection"]
+    },
+    { 
+      icon: Anchor, 
+      title: "Marine", 
+      desc: "Cargo, hull and transit insurance across import, export and inland routes.",
+      features: ["Inland Transit Insurance", "Import & Export Cargo Cover", "Marine Hull Insurance", "Custom Duty & Freight Protection", "End-to-End Claim Support"]
+    },
+    { 
+      icon: Truck, 
+      title: "Motor Fleet", 
+      desc: "Comprehensive fleet cover for commercial vehicles and logistics.",
+      features: ["Own Damage & Theft Cover", "Third-Party Liability Protection", "Driver & Passenger Accident Cover", "Goods in Transit Protection", "Zero Depreciation Add-ons"]
+    },
+    { 
+      icon: Shield, 
+      title: "Liability", 
+      desc: "Professional indemnity, D&O, cyber and public liability cover.",
+      features: ["Directors & Officers (D&O)", "Professional Indemnity", "Cyber & Data Breach Liability", "Commercial General Liability", "Product Liability & Recall"]
+    },
+    { 
+      icon: Boxes, 
+      title: "Other Products", 
+      desc: "Group health, workmen comp and bespoke corporate risk solutions.",
+      features: ["Group Health & GMC", "Workmen's Compensation", "Group Personal Accident", "Credit Insurance", "Tailored Corporate Policies"]
+    },
   ];
   const individual = [
-    { icon: Plane, title: "Travel", desc: "Domestic & international travel cover — medical, baggage and trip delay." },
-    { icon: HeartPulse, title: "Health", desc: "Family floater & individual health plans with cashless hospital network." },
-    { icon: ShieldCheck, title: "Life", desc: "Term, whole-life and savings plans aligned to your financial goals." },
-    { icon: Car, title: "Motor Insurance", desc: "Car & two-wheeler cover with zero-depreciation and engine protection add-ons." },
+    { 
+      icon: Plane, 
+      title: "Travel", 
+      desc: "Domestic & international travel cover — medical, baggage and trip delay.",
+      features: ["Emergency Medical Evacuation", "Trip Cancellation & Delay", "Loss of Baggage & Passport", "Personal Liability Cover", "24x7 Global Assistance"]
+    },
+    { 
+      icon: HeartPulse, 
+      title: "Health", 
+      desc: "Family floater & individual health plans with cashless hospital network.",
+      features: ["Comprehensive Cashless Network", "Pre & Post Hospitalization", "No Room Rent Capping Options", "Maternity & OPD Cover", "Annual Health Checkups"]
+    },
+    { 
+      icon: ShieldCheck, 
+      title: "Life", 
+      desc: "Term, whole-life and savings plans aligned to your financial goals.",
+      features: ["High Sum Assured Term Plans", "Critical Illness Riders", "Accidental Death Benefits", "Tax-Free Maturity Returns", "Flexible Premium Payment Terms"]
+    },
+    { 
+      icon: Car, 
+      title: "Motor Insurance", 
+      desc: "Car & two-wheeler cover with zero-depreciation and engine protection add-ons.",
+      features: ["Zero Depreciation Cover", "Engine & Gearbox Protection", "Consumables & Key Replacement", "Roadside Assistance (RSA)", "Return to Invoice (RTI)"]
+    },
   ];
   return (
-    <section id="services" className="py-20 sm:py-28 bg-gradient-soft">
-      <div className="container-x">
-        <SectionHeader
-          eyebrow="What we cover"
-          title="Protection for every part of life — and business."
-          subtitle="From boardroom risks to family health, we structure the right cover at the right price."
-        />
+    <section id="services" className="relative py-24 sm:py-32 bg-secondary/10 overflow-hidden">
+      {/* Subtle Premium Background Enhancements */}
+      <div className="absolute inset-0 grid-faint opacity-[0.04] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="mt-14">
-          <div className="flex items-center gap-3 mb-6">
-            <Building2 className="h-5 w-5 text-gold" />
-            <h3 className="font-display font-bold text-xl text-primary">Corporate Insurance</h3>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {corporate.map((s, i) => <ServiceCard key={s.title} {...s} delay={i * 60} />)}
-          </div>
+      <div className="container-x relative z-10">
+        <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
+          <SectionHeader
+            eyebrow="Comprehensive Coverage"
+            title="Enterprise-grade protection for your business and life."
+            subtitle="We benchmark across top insurers to structure the right coverage, ensuring you are protected against both everyday liabilities and catastrophic risks."
+          />
         </div>
 
         <div className="mt-16">
-          <div className="flex items-center gap-3 mb-6">
-            <Users className="h-5 w-5 text-gold" />
-            <h3 className="font-display font-bold text-xl text-primary">Individual Insurance</h3>
+          <div className="flex items-center gap-4 mb-8 animate-fade-up" style={{ animationDelay: "100ms" }}>
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white border border-border/60 text-gold shadow-sm">
+              <Building2 className="h-5 w-5" />
+            </div>
+            <div>
+              <h3 className="font-display font-extrabold text-2xl text-primary">Corporate Solutions</h3>
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-1">Tailored for businesses</p>
+            </div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {individual.map((s, i) => <ServiceCard key={s.title} {...s} delay={i * 60} />)}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            {corporate.map((s, i) => <ServiceCard key={s.title} {...s} delay={200 + i * 100} onClick={() => setActiveService({...s, category: "Corporate"})} />)}
+          </div>
+        </div>
+
+        <div className="my-16 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent animate-fade-up" style={{ animationDelay: "300ms" }} />
+
+        <div>
+          <div className="flex items-center gap-4 mb-8 animate-fade-up" style={{ animationDelay: "400ms" }}>
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white border border-border/60 text-gold shadow-sm">
+              <Users className="h-5 w-5" />
+            </div>
+            <div>
+              <h3 className="font-display font-extrabold text-2xl text-primary">Individual & Family</h3>
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-1">Personal risk management</p>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {individual.map((s, i) => <ServiceCard key={s.title} {...s} delay={500 + i * 100} onClick={() => setActiveService({...s, category: "Personal"})} />)}
           </div>
         </div>
       </div>
+
+      <ServiceModal activeService={activeService} onClose={() => setActiveService(null)} />
     </section>
   );
 };
 
-const ServiceCard = ({ icon: Icon, title, desc, delay }: any) => (
-  <div className="group lift relative bg-card rounded-2xl border border-border p-6 shadow-soft animate-fade-up h-full" style={{ animationDelay: `${delay}ms` }}>
-    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors">
+const ServiceCard = ({ icon: Icon, title, desc, delay, onClick }: any) => (
+  <button 
+    onClick={onClick}
+    className="text-left w-full group relative bg-white rounded-2xl border border-border/60 p-7 shadow-sm hover:shadow-2xl hover:border-gold/30 hover:shadow-gold/15 hover:-translate-y-2 transition-all duration-500 animate-fade-up h-full flex flex-col focus:outline-none focus:ring-2 focus:ring-gold/50 overflow-hidden" 
+    style={{ animationDelay: `${delay}ms` }}
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+    <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500">
       <Icon className="h-6 w-6" />
     </div>
-    <h4 className="mt-5 font-display font-bold text-lg text-primary">{title}</h4>
-    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-  </div>
+    <h4 className="relative z-10 mt-6 font-display font-bold text-xl text-primary group-hover:text-gold transition-colors duration-300">{title}</h4>
+    <p className="relative z-10 mt-2.5 text-sm leading-relaxed text-muted-foreground flex-1">{desc}</p>
+    
+    <div className="relative z-10 mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary group-hover:text-gold transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0">
+      Explore <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+    </div>
+  </button>
 );
+
+const ServiceModal = ({ activeService, onClose }: { activeService: any; onClose: () => void }) => {
+  useEffect(() => {
+    if (activeService) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
+    return () => { document.body.style.overflow = ''; };
+  }, [activeService]);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [onClose]);
+
+  if (!activeService) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-8">
+      <style>{`
+        @keyframes modal-fade-in { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes modal-slide-up { from { opacity: 0; transform: scale(0.96) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes fade-in-stagger { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+        .animate-modal-backdrop { animation: modal-fade-in 0.4s ease-out forwards; }
+        .animate-modal-content { animation: modal-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-stagger { opacity: 0; animation: fade-in-stagger 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+      `}</style>
+      
+      {/* Backdrop */}
+      <div 
+        className="absolute inset-0 bg-primary/60 backdrop-blur-md animate-modal-backdrop"
+        onClick={onClose}
+      />
+      
+      {/* Modal Container */}
+      <div className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-[2rem] bg-primary text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] ring-1 ring-white/10 flex flex-col animate-modal-content">
+        
+        {/* Subtle Background Enhancements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.1)_0%,transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.1)_0%,transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 grid-faint opacity-[0.03] pointer-events-none" />
+
+        {/* Close Button */}
+        <button 
+          onClick={onClose}
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white hover:rotate-90 transition-all duration-300"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        {/* Scrollable Content */}
+        <div className="relative z-10 flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="grid lg:grid-cols-5 min-h-full">
+            
+            {/* LEFT: Visual Section */}
+            <div className="hidden sm:flex lg:col-span-2 relative flex-col justify-between overflow-hidden bg-gradient-to-br from-white/5 to-white/[0.01] p-8 border-b lg:border-b-0 lg:border-r border-white/10 group">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gold/20 rounded-full blur-[80px] group-hover:bg-gold/30 transition-colors duration-700" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-[80px] group-hover:bg-blue-500/30 transition-colors duration-700" />
+              
+              <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 text-gold shadow-2xl transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-6">
+                <activeService.icon className="h-12 w-12" />
+              </div>
+
+              <div className="relative z-10 mt-16 space-y-4">
+                <div className="inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-md border border-white/10 px-5 py-2.5 text-xs font-semibold text-white shadow-xl transform transition-transform duration-500 hover:scale-105 group-hover:translate-x-2">
+                  <ShieldCheck className="h-4 w-4 text-gold" />
+                  Trusted Insurance Advisory
+                </div>
+                <div className="inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-md border border-white/10 px-5 py-2.5 text-xs font-semibold text-white shadow-xl transform transition-transform duration-500 delay-75 hover:scale-105 group-hover:translate-x-2">
+                  <Award className="h-4 w-4 text-gold" />
+                  20+ Years Experience
+                </div>
+                <div className="inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-md border border-white/10 px-5 py-2.5 text-xs font-semibold text-white shadow-xl transform transition-transform duration-500 delay-150 hover:scale-105 group-hover:translate-x-2">
+                  <Headphones className="h-4 w-4 text-gold" />
+                  Claim Support Included
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT: Content Section */}
+            <div className="lg:col-span-3 flex flex-col p-6 sm:p-10 lg:p-12">
+              
+              {/* Mobile Icon */}
+              <div className="sm:hidden mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 border border-white/20 text-gold shadow-lg">
+                <activeService.icon className="h-8 w-8" />
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{activeService.category || "Coverage"}</p>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold leading-tight text-white">
+                  {activeService.title} Coverage
+                </h2>
+                <div className="mt-6 h-1 w-16 bg-gradient-to-r from-gold to-transparent rounded-full" />
+                <p className="mt-6 text-white/70 leading-relaxed text-base sm:text-lg">
+                  {activeService.desc}
+                </p>
+              </div>
+
+              {/* Features */}
+              <div className="mt-10">
+                <h4 className="text-sm font-semibold text-white/90 uppercase tracking-wider mb-5">Key Inclusions</h4>
+                <ul className="space-y-4">
+                  {activeService.features?.map((feat: string, i: number) => (
+                    <li key={i} className="flex items-start gap-3 text-sm sm:text-base font-medium text-white/80 animate-stagger" style={{ animationDelay: `${200 + i * 100}ms` }}>
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold mt-0.5">
+                        <CheckCircle2 className="h-3.5 w-3.5" />
+                      </div>
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Benefit Mini Cards */}
+              <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4">
+                {[
+                  { icon: Clock, label: "Fast Claims" },
+                  { icon: Users, label: "Expert Advisors" },
+                  { icon: FileCheck, label: "Customized Policies" },
+                  { icon: Handshake, label: "Long-term Support" },
+                ].map((b, i) => (
+                  <div key={i} className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 p-3 sm:p-4 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 hover:border-gold/30 hover:shadow-[0_10px_30px_rgba(212,175,55,0.1)] group/card animate-stagger" style={{ animationDelay: `${600 + i * 100}ms` }}>
+                    <b.icon className="h-5 w-5 text-gold shrink-0 group-hover/card:scale-110 transition-transform duration-300" />
+                    <span className="text-xs sm:text-sm font-semibold text-white">{b.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Section */}
+              <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-4 animate-stagger" style={{ animationDelay: `1000ms` }}>
+                <Button variant="gold" size="xl" asChild className="w-full sm:w-auto shadow-lg shadow-gold/20 hover:-translate-y-0.5 hover:shadow-gold/30 transition-all text-sm font-bold">
+                  <a href="#contact" onClick={onClose}>Talk to an Advisor <ArrowRight className="h-4 w-4 ml-2" /></a>
+                </Button>
+                <Button variant="outlineLight" size="xl" asChild className="w-full sm:w-auto hover:bg-white/10 hover:-translate-y-0.5 transition-all text-sm font-bold">
+                  <a href="#quote" onClick={onClose}>Get Free Consultation</a>
+                </Button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /* ---------- HOW IT WORKS ---------- */
 export const HowItWorks = () => {
@@ -445,31 +672,38 @@ export const HowItWorks = () => {
 /* ---------- FEATURE HIGHLIGHT ---------- */
 export const FeatureHighlight = () => {
   const items = [
-    { icon: FileCheck, title: "Plain-English policies", desc: "We translate the fine print so you know exactly what's covered." },
-    { icon: Clock, title: "24x7 claim helpdesk", desc: "Real humans, available when emergencies don't wait for office hours." },
-    { icon: Lock, title: "Your data, secured", desc: "Bank-grade encryption. We never sell your information. Ever." },
+    { icon: FileCheck, title: "Transparent Policy Guidance", desc: "Clear explanations, honest comparisons, and no confusing insurance jargon." },
+    { icon: Headphones, title: "Dedicated Claim Assistance", desc: "Fast documentation support, follow-ups, and smooth claim coordination." },
+    { icon: Handshake, title: "Long-Term Relationship", desc: "Continuous advisory support for renewals, upgrades, and changing risk needs." },
   ];
   return (
-    <section className="py-20 sm:py-28">
-      <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="relative py-24 sm:py-32 overflow-hidden bg-white">
+      {/* Subtle Premium Background Enhancements */}
+      <div className="absolute inset-0 grid-faint opacity-[0.03] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="container-x relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         
         {/* LEFT: Enhanced Image */}
-        <div className="relative order-2 lg:order-1 h-full">
-          <div className="relative rounded-3xl overflow-hidden shadow-lift ring-1 ring-border group h-full">
-            <img src={advisorImg} alt="Vamana advisor consulting client" className="w-full h-[500px] lg:h-full min-h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={1024} height={1024} />
+        <div className="relative order-2 lg:order-1 h-full w-full max-w-lg mx-auto lg:max-w-none animate-fade-up" style={{ animationDelay: "100ms" }}>
+          <div className="absolute inset-0 bg-gold/15 blur-[80px] rounded-full transform -translate-x-4 translate-y-4 pointer-events-none" />
+          
+          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-border group h-full">
+            <img src={advisorImg} alt="Vamana advisor consulting client" className="w-full h-[500px] lg:h-full min-h-[500px] lg:min-h-[600px] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={1024} height={1024} />
             
             {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/10 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent pointer-events-none opacity-90" />
             
             {/* Floating Info Card */}
-            <div className="absolute bottom-6 left-6 right-6 sm:right-auto bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl text-white shadow-2xl pointer-events-none">
+            <div className="absolute bottom-6 left-6 right-6 sm:right-auto bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] pointer-events-none transform transition-transform duration-500 group-hover:-translate-y-2">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold border border-gold/30">
-                  <Headphones className="h-6 w-6" />
+                  <ShieldCheck className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="font-display font-bold text-lg leading-tight">Dedicated Advisor</p>
-                  <p className="text-xs text-white/75 font-medium mt-0.5">Direct access to real experts</p>
+                  <p className="font-display font-bold text-lg leading-tight">Client-First Approach</p>
+                  <p className="text-xs text-white/80 font-medium mt-0.5">Your trusted insurance partner</p>
                 </div>
               </div>
             </div>
@@ -477,27 +711,50 @@ export const FeatureHighlight = () => {
         </div>
         
         {/* RIGHT: Structured Content */}
-        <div className="order-1 lg:order-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">The Vamana difference</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold leading-tight text-primary">
-            A real advisor — not a chatbot, not a call centre.
-          </h2>
-          <div className="mt-8 space-y-5 max-w-xl">
-            <p className="text-muted-foreground leading-relaxed">
-              Every client gets a dedicated advisor who knows your portfolio, your family, and your business. The same person who sells you the policy is the one who fights for your claim.
-            </p>
+        <div className="order-1 lg:order-2 flex flex-col">
+          <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Why clients stay with Vamana</p>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold leading-tight text-primary">
+              Built on trust, backed by expertise, focused on your future.
+            </h2>
+            <div className="mt-6 h-1 w-20 bg-gradient-to-r from-gold to-transparent rounded-full" />
+            <div className="mt-6 space-y-5 max-w-xl">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                Vamana Insurance Broking helps individuals, families, and businesses make confident insurance decisions with complete transparency and long-term support.
+              </p>
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                From selecting the right coverage to managing claims and renewals, our advisors stay involved at every stage — ensuring your protection evolves with your life and business needs.
+              </p>
+            </div>
+          </div>
+
+          {/* Premium Trust Badges */}
+          <div className="mt-8 flex flex-wrap items-center gap-3 animate-fade-up" style={{ animationDelay: "100ms" }}>
+            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-300 px-4 py-2 text-xs font-semibold text-primary">
+              <Briefcase className="h-3.5 w-3.5 text-gold" /> 20+ Years Industry Experience
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-300 px-4 py-2 text-xs font-semibold text-primary">
+              <ShieldCheck className="h-3.5 w-3.5 text-gold" /> IRDAI Licensed Broker
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-300 px-4 py-2 text-xs font-semibold text-primary">
+              <Handshake className="h-3.5 w-3.5 text-gold" /> Client-First Advisory
+            </span>
           </div>
           
-          <hr className="my-10 border-border/60" />
+          <div className="my-10 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent animate-fade-up" style={{ animationDelay: "200ms" }} />
           
           <div className="space-y-4">
-            {items.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 group">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors">
+            {items.map(({ icon: Icon, title, desc }, i) => (
+              <div 
+                key={title} 
+                className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-xl hover:border-gold/30 hover:shadow-gold/10 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 group animate-fade-up"
+                style={{ animationDelay: `${300 + (i * 100)}ms` }}
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold group-hover:scale-110 transition-all duration-300">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-primary">{title}</h4>
+                  <h4 className="font-display font-bold text-lg text-primary">{title}</h4>
                   <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{desc}</p>
                 </div>
               </div>
@@ -516,6 +773,7 @@ const blogPosts = [
     tag: "Health",
     title: "Family floater vs individual health: which one actually saves more?",
     read: "6 min read",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
     body: `When choosing health insurance, most Indian families face the same question — should you buy a single family floater or individual policies for each member?\n\nA family floater shares one sum insured across all members. It's typically cheaper when everyone is young and healthy, and gives the flexibility of one large pool. However, if one member has a major claim, the cover is depleted for the rest of the year.\n\nIndividual policies cost more in total premium, but each member has their own dedicated cover. This is often the better choice when there's an age gap of 15+ years between members, when a parent has pre-existing conditions, or when the eldest member is over 50.\n\nA practical hybrid: keep a family floater of ₹10–15L for routine claims, and add a ₹25–50L super top-up that kicks in for major hospitalisations. You get high cover at low premium — and protection that doesn't run out.`,
   },
   {
@@ -523,6 +781,7 @@ const blogPosts = [
     tag: "Motor",
     title: "Zero-dep, IDV, NCB — the 3 add-ons that decide your motor claim.",
     read: "5 min read",
+    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80",
     body: `Motor insurance looks simple until you actually file a claim. Three terms quietly decide how much money you receive — IDV, Zero Depreciation, and No Claim Bonus.\n\nIDV (Insured Declared Value) is the maximum payout if your vehicle is stolen or written off. Many buyers reduce IDV to lower premium — and regret it badly during a total loss claim. Always insure at fair market value.\n\nZero Depreciation cover ensures the insurer pays the full part-replacement cost without deducting depreciation on plastic, rubber and metal parts. For cars under 5 years old, this single add-on can mean the difference between a ₹40,000 and a ₹15,000 settlement on a typical bumper repair.\n\nNo Claim Bonus (NCB) is a discount earned for every claim-free year — going up to 50%. Don't lose it on a small dent claim; pay small repairs out of pocket and protect the bonus.`,
   },
   {
@@ -530,6 +789,7 @@ const blogPosts = [
     tag: "Business",
     title: "Why every Indian SME needs cyber liability cover in 2026.",
     read: "8 min read",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
     body: `India recorded over 1.6 million cyber incidents in 2025 — and SMEs were the biggest target. A single ransomware attack now costs an average Indian SME ₹35–80 lakh in downtime, recovery and regulatory penalties.\n\nUnder the Digital Personal Data Protection Act, businesses handling customer data are now legally accountable for breaches. Fines can go up to ₹250 crore per violation.\n\nA cyber liability policy typically covers: data breach response, forensic investigation, legal defence, regulatory penalties, business interruption, and ransomware payments. Premium for a ₹5 crore cover starts as low as ₹40,000 a year — a fraction of the potential loss.\n\nIf your business processes payments, stores customer data, or runs on email and cloud apps, you already have cyber exposure. The question is whether it's insured.`,
   },
 ];
@@ -539,27 +799,57 @@ export const Insights = () => {
   const active = blogPosts.find((p) => p.id === openId) || null;
 
   return (
-    <section id="insights" className="py-20 sm:py-28">
-      <div className="container-x">
-        <SectionHeader eyebrow="Insights" title="Read before you buy." subtitle="Practical, jargon-free guides written by our advisors." />
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {blogPosts.map((p, i) => (
-            <article key={p.id} className="lift group rounded-2xl overflow-hidden border border-border bg-card shadow-soft animate-fade-up flex flex-col" style={{ animationDelay: `${i * 80}ms` }}>
-              <div className="h-44 bg-gradient-to-br from-primary to-primary-soft relative overflow-hidden">
-                <div className="absolute inset-0 grid-faint opacity-40" />
-                <span className="absolute top-4 left-4 rounded-full bg-gold text-primary text-[11px] font-bold px-3 py-1">{p.tag}</span>
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-display font-bold text-lg text-primary leading-snug">{p.title}</h3>
-                <div className="mt-auto pt-4 flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">{p.read}</span>
-                  <button onClick={() => setOpenId(p.id)} className="font-semibold text-primary inline-flex items-center gap-1 hover:text-gold transition-colors">
-                    Read Blog <ArrowRight className="h-4 w-4" />
-                  </button>
+    <section id="insights" className="relative py-24 sm:py-32 overflow-hidden bg-white">
+      {/* Subtle Premium Background Enhancements */}
+      <div className="absolute inset-0 grid-faint opacity-[0.03] pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="container-x relative z-10">
+        <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
+          <SectionHeader eyebrow="Insights" title="Read before you buy." subtitle="Practical, jargon-free guides written by our advisory team." />
+        </div>
+        
+        <div className="relative mt-14 sm:mt-16 -mx-4 sm:mx-0">
+          {/* Mobile Fade Edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 sm:hidden pointer-events-none opacity-80" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 sm:hidden pointer-events-none opacity-80" />
+
+          <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 gap-5 lg:gap-8 overflow-x-auto snap-x snap-mandatory sm:snap-none px-4 sm:px-0 pb-8 sm:pb-0 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            {blogPosts.map((p, i) => (
+              <article 
+                key={p.id} 
+                className="w-[85vw] min-w-[85vw] sm:w-auto sm:min-w-0 shrink-0 snap-center group relative rounded-2xl sm:rounded-[2rem] overflow-hidden border border-border/60 bg-white shadow-sm hover:shadow-2xl hover:border-gold/30 hover:shadow-gold/15 hover:-translate-y-2 transition-all duration-500 animate-fade-up flex flex-col cursor-pointer" 
+                style={{ animationDelay: `${100 + i * 150}ms` }} 
+                onClick={() => setOpenId(p.id)}
+              >
+                {/* Image Section */}
+                <div className="relative h-[180px] sm:h-[220px] w-full overflow-hidden bg-primary/5">
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05] group-hover:brightness-110" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
+                  <span className="absolute top-4 left-4 sm:top-5 sm:left-5 rounded-full bg-gold/90 backdrop-blur-md text-primary text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 shadow-lg shadow-black/20">
+                    {p.tag}
+                  </span>
                 </div>
-              </div>
-            </article>
-          ))}
+
+                {/* Content Section */}
+                <div className="p-6 sm:p-8 flex flex-col flex-1 relative z-10">
+                  <h3 className="font-display font-extrabold text-lg sm:text-xl text-primary leading-snug line-clamp-2 group-hover:text-gold transition-colors duration-300">
+                    {p.title}
+                  </h3>
+                  <div className="mt-4 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                    <Clock className="h-3.5 w-3.5 text-primary/40" />
+                    <span>{p.read}</span>
+                  </div>
+                  <div className="mt-auto pt-6 flex items-center justify-between">
+                    <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider text-primary group-hover:text-gold transition-colors duration-300 flex items-center gap-2">
+                      Read Blog <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -716,7 +1006,8 @@ const SectionHeader = ({ eyebrow, title, subtitle, dark }: { eyebrow: string; ti
   <div className="max-w-2xl">
     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{eyebrow}</p>
     <h2 className={`mt-3 font-display text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold leading-tight ${dark ? "text-white" : "text-primary"}`}>{title}</h2>
-    {subtitle && <p className={`mt-4 text-base sm:text-lg leading-relaxed ${dark ? "text-white/70" : "text-muted-foreground"}`}>{subtitle}</p>}
+    <div className="mt-6 h-1 w-20 bg-gradient-to-r from-gold to-transparent rounded-full" />
+    {subtitle && <p className={`mt-6 text-base sm:text-lg leading-relaxed ${dark ? "text-white/70" : "text-muted-foreground"}`}>{subtitle}</p>}
   </div>
 );
 
