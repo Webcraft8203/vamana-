@@ -8,8 +8,14 @@ import NotFound from "./pages/NotFound.tsx";
 import RiskManagement from "./pages/services/RiskManagement.tsx";
 import ClaimsManagement from "./pages/services/ClaimsManagement.tsx";
 import InsurancePortfolioManagement from "./pages/services/InsurancePortfolioManagement.tsx";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const queryClient = new QueryClient();
+
+const GlobalEffects = () => {
+  useScrollReveal();
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -17,6 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <GlobalEffects />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services/risk-management" element={<RiskManagement />} />
