@@ -22,6 +22,7 @@ const features = [
 ];
 
 export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: ServiceDetailPageProps) => {
+  useScrollReveal();
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `${title} — Vamana Insurance Broking`;
