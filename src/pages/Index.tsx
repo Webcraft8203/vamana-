@@ -4,9 +4,11 @@ import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { About, VisionMission, WhyVamana, Services, HowItWorks, FeatureHighlight, Insights, FinalCTA, Footer } from "@/components/site/Sections";
 import { FloatingActions } from "@/components/site/FloatingActions";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
+  useScrollReveal();
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

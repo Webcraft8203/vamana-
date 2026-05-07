@@ -116,6 +116,17 @@
   .delay-200 { animation-delay: 0.2s; }
   .delay-300 { animation-delay: 0.3s; }
   .delay-400 { animation-delay: 0.4s; }
+
+  /* Scroll-reveal: hold the animation until the element enters the viewport.
+     `useScrollReveal` toggles these classes via IntersectionObserver. */
+  .animate-fade-up.reveal-pending {
+    animation-play-state: paused;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .animate-fade-up.reveal-in {
+    animation-play-state: running;
+  }
 }
 
 @keyframes fadeUp {
