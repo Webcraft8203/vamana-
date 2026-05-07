@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/Sections";
 import { FloatingActions } from "@/components/site/FloatingActions";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 interface ServiceDetailPageProps {
   title: string;
@@ -21,6 +22,7 @@ const features = [
 ];
 
 export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: ServiceDetailPageProps) => {
+  useScrollReveal();
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `${title} — Vamana Insurance Broking`;
