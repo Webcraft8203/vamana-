@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/Sections";
 import { FloatingActions } from "@/components/site/FloatingActions";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 interface ServiceDetailPageProps {
   title: string;
