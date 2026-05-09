@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/site/Modal";
 import advisorImg from "@/assets/feature-advisor.jpg";
 import aboutImg from "@/assets/about-team.jpg";
+import logo from "@/assets/vamana-logo.png";
 
 /* ---------- ABOUT ---------- */
 export const About = () => {
@@ -84,7 +85,7 @@ export const About = () => {
           
           <div className="mt-8 space-y-5 max-w-xl animate-fade-up" style={{ animationDelay: "300ms" }}>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Vamana Insurance Broking is built on over two decades of experience in customer-first organizations. We exist to protect what matters most — your people, your business, and your future.
+              Vamana Insurance is built on over two decades of experience in customer-first organizations. We exist to protect what matters most — your people, your business, and your future.
             </p>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               We don't just sell policies. We partner with you to design the right insurance strategy, ensuring your risks are covered with clarity, transparency, and zero pressure.
@@ -171,53 +172,168 @@ export const About = () => {
 
 /* ---------- LEADERSHIP / TEAM ---------- */
 export const Leadership = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   const team = [
     { name: "Mr. Ajit Mhaske", role: "Director & President", desc: "Leads strategic insurance advisory initiatives with decades of industry expertise." },
     { name: "Mr. Udaysinh Gaikwad", role: "Director", desc: "Drives enterprise growth and corporate governance through robust risk frameworks." },
     { name: "Mr. Vijay Khirdikar", role: "Principal Officer", desc: "Oversees regulatory compliance and core operational excellence aligned with IRDAI." },
     { name: "Mr. Pankaj Pardeshi", role: "Associate Director", desc: "Spearheads business development and client acquisition across diverse corporate sectors." },
   ];
+
+  const getInitials = (name: string) => {
+    return name.replace('Mr. ', '').split(' ').map(n => n[0]).join('');
+  };
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    if (scrollWidth <= clientWidth) return;
+    const index = Math.round((scrollLeft / (scrollWidth - clientWidth)) * (team.length - 1));
+    setActiveIndex(index || 0);
+  };
+
+  useEffect(() => {
+    if (paused) return;
+    const interval = setInterval(() => {
+      if (window.innerWidth >= 1024) return; // Desktop uses grid layout
+      if (scrollRef.current) {
+        let nextIndex = activeIndex + 1;
+        if (nextIndex >= team.length) nextIndex = 0;
+        const child = scrollRef.current.children[nextIndex];
+        if (child) child.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [activeIndex, paused, team.length]);
+
   return (
-    <section id="leadership" className="relative py-24 sm:py-32 bg-secondary/10 overflow-hidden">
-      {/* Subtle Premium Background */}
+    <section id="leadership" className="relative py-24 sm:py-32 bg-[#F8FAFC]/50 overflow-hidden">
+      {/* Localized Premium Animations */}
+      <style>{`
+        @keyframes shimmer-line {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .animate-shimmer-line {
+          animation: shimmer-line 2.5s infinite ease-in-out;
+        }
+      `}</style>
+
+      {/* Enhanced Premium Background & Ambient Lighting */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.06)_0%,transparent_60%)] pointer-events-none" />
       <div className="absolute inset-0 grid-faint opacity-[0.04] pointer-events-none" />
-      <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-10%] right-1/4 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[150px] pointer-events-none mix-blend-multiply" />
+      <div className="absolute bottom-[-10%] left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none mix-blend-multiply" />
 
       <div className="container-x relative z-10">
-        <div className="max-w-2xl mx-auto text-center animate-fade-up">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Executive Board</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold leading-tight text-primary">
-            Our Leadership
-          </h2>
-          <div className="mt-6 mx-auto h-1 w-16 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full" />
-          <p className="mt-6 text-base text-muted-foreground leading-relaxed">
-            An executive team of insurance veterans and risk strategists dedicated to securing your enterprise.
-          </p>
+        <div className="max-w-3xl mx-auto text-center animate-fade-up relative">
+          {/* Radial Spotlight behind heading */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-gold/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+          
+          <div className="relative z-10">
+            <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.25em] text-gold mb-3.5">EXECUTIVE BOARD</p>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.15] tracking-tight text-primary drop-shadow-sm">
+              Leadership That Builds Trust
+            </h2>
+            <div className="mt-6 mx-auto h-[3px] w-24 bg-gradient-to-r from-transparent via-gold/60 to-transparent rounded-full relative overflow-hidden">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent animate-shimmer-line" />
+            </div>
+            <p className="mt-6 text-base sm:text-[1.1rem] font-medium text-muted-foreground/90 leading-relaxed max-w-2xl mx-auto">
+              An executive team of insurance veterans and risk strategists dedicated to securing your enterprise.
+            </p>
+          </div>
         </div>
 
-        <div className="mt-16 grid sm:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
-          {team.map((m, i) => (
-            <div
-              key={m.name}
-              className="group relative bg-white/90 backdrop-blur-sm rounded-xl p-8 lg:p-10 shadow-sm hover:shadow-2xl hover:shadow-gold/10 border border-border/50 hover:border-gold/30 hover:-translate-y-1 transition-all duration-500 animate-fade-up overflow-hidden flex flex-col items-center sm:items-start text-center sm:text-left"
-              style={{ animationDelay: `${i * 100}ms` }}
-            >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold/40 via-gold to-gold/40 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,175,55,0.04)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              
-              <div className="relative z-10 flex flex-col items-center sm:items-start w-full">
-                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gold mb-3">{m.role}</p>
-                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-primary leading-tight">
-                  {m.name}
-                </h3>
-                <div className="mt-4 h-px w-10 bg-border/80 group-hover:w-full group-hover:bg-gold/30 transition-all duration-700 ease-out" />
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  {m.desc}
-                </p>
+        <div className="relative mt-16 sm:mt-20 -mx-4 sm:mx-0 max-w-[1400px] mx-auto">
+          <div 
+            ref={scrollRef}
+            onScroll={handleScroll}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onTouchStart={() => setPaused(true)}
+            onTouchEnd={() => setPaused(false)}
+            className="flex lg:grid lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory lg:snap-none scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-4 sm:px-6 lg:px-0 pb-8 lg:pb-0"
+          >
+            {team.map((m, i) => {
+              const isFeatured = i === 0;
+              const isActive = activeIndex === i;
+
+              return (
+                <div 
+                  key={m.name} 
+                  className={`w-[85vw] sm:w-[320px] lg:w-auto shrink-0 snap-center group relative rounded-[2rem] p-7 sm:p-8 flex flex-col transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden animate-fade-up
+                    ${isActive ? 'scale-100 opacity-100' : 'scale-[0.96] opacity-70 lg:scale-100 lg:opacity-100'}
+                    ${isFeatured 
+                      ? 'bg-gradient-to-b from-white/95 to-white/70 border border-gold/40 shadow-[0_15px_40px_-12px_rgba(212,175,55,0.2)] hover:shadow-[0_20px_50px_-12px_rgba(212,175,55,0.3)] ring-1 ring-gold/10' 
+                      : 'bg-white/60 backdrop-blur-2xl border border-white/50 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.08)] hover:bg-white/80 hover:border-gold/30 hover:ring-1 hover:ring-gold/10'
+                    } hover:-translate-y-2`}
+                  style={{ animationDelay: `${150 + (i * 150)}ms` }}
+                >
+                {/* Premium Inner Highlight (Glassmorphism Depth) */}
+                <div className="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,1)] rounded-[2rem] pointer-events-none" />
+
+                {/* Soft gradient shift on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-gold/[0.04] to-primary/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                
+                {/* Ambient radial glow on hover */}
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-gold/20 rounded-full blur-[70px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col h-full gap-6">
+                  {/* Executive Avatar Container */}
+                  <div className="relative self-start">
+                    {/* Avatar Hover Glow */}
+                    <div className={`absolute inset-0 rounded-[1.25rem] blur-xl transition-opacity duration-700 ease-out pointer-events-none ${isFeatured ? 'bg-gold/30 opacity-100' : 'bg-primary/20 opacity-0 group-hover:opacity-100 group-hover:bg-gold/20'}`} />
+                    
+                    <div className={`relative flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-[1.25rem] font-display font-extrabold text-[1.5rem] shadow-sm transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+                      ${isFeatured 
+                        ? 'bg-primary text-gold border border-gold/40 shadow-[0_8px_20px_-4px_rgba(212,175,55,0.4)]' 
+                        : 'bg-white/80 backdrop-blur-sm border border-border/80 text-primary group-hover:bg-primary group-hover:text-gold group-hover:border-gold/40 group-hover:shadow-[0_8px_20px_-4px_rgba(212,175,55,0.3)]'
+                      } group-hover:scale-[1.08] group-hover:-rotate-3`}
+                    >
+                      <div className="absolute inset-0 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] rounded-[1.25rem] pointer-events-none" />
+                      {getInitials(m.name)}
+                    </div>
+                  </div>
+
+                  <div className="flex-1 flex flex-col">
+                    <p className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.25em] mb-2.5 transition-colors duration-500 ${isFeatured ? 'text-gold' : 'text-gold/80 group-hover:text-gold'}`}>{m.role}</p>
+                    <h3 className="font-display font-extrabold text-[1.4rem] leading-tight tracking-tight text-primary group-hover:text-primary/90 transition-colors duration-500">
+                      {m.name}
+                    </h3>
+                    
+                    {/* Divider */}
+                    <div className="mt-6 h-px w-full bg-gradient-to-r from-border via-border/50 to-transparent group-hover:from-gold/40 group-hover:via-gold/10 transition-colors duration-700" />
+                    
+                    {/* Description */}
+                    <p className="mt-6 text-[0.95rem] leading-relaxed text-muted-foreground/90 group-hover:text-primary/80 transition-colors duration-500">
+                      {m.desc}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            )})}
+          </div>
+
+          {/* Mobile Pagination Dots */}
+          <div className="mt-4 sm:mt-6 flex items-center justify-center gap-2.5 lg:hidden">
+            {team.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setActiveIndex(i);
+                  if (scrollRef.current) {
+                    const child = scrollRef.current.children[i];
+                    if (child) child.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                  }
+                }}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${activeIndex === i ? 'w-8 bg-gold' : 'w-2.5 bg-primary/15 hover:bg-primary/30'}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -782,7 +898,7 @@ export const FeatureHighlight = () => {
             <div className="mt-6 h-1 w-20 bg-gradient-to-r from-gold to-transparent rounded-full" />
             <div className="mt-6 space-y-5 max-w-xl">
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Vamana Insurance Broking helps individuals, families, and businesses make confident insurance decisions with complete transparency and long-term support.
+                Vamana Insurance helps individuals, families, and businesses make confident insurance decisions with complete transparency and long-term support.
               </p>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                 From selecting the right coverage to managing claims and renewals, our advisors stay involved at every stage — ensuring your protection evolves with your life and business needs.
@@ -959,7 +1075,7 @@ export const FinalCTA = () => (
               <a href="tel:+910000000000">Call an Advisor <ArrowRight className="h-4 w-4" /></a>
             </Button>
             <Button variant="outlineLight" size="xl" asChild>
-              <a href="mailto:hello@vamanainsurance.in">Email Us</a>
+              <a href="mailto:solutions@vamanainsurance.in">Email Us</a>
             </Button>
           </div>
         </div>
@@ -970,12 +1086,10 @@ export const FinalCTA = () => (
 
 /* ---------- FOOTER ---------- */
 const legalDocs: Record<string, { title: string; body: string }> = {
-  terms: { title: "Terms & Conditions", body: `These Terms govern your use of Vamana Insurance Broking Pvt. Ltd.'s website and services. By accessing our services, you agree to comply with all applicable laws and regulations of India, including the IRDAI (Insurance Brokers) Regulations.\n\nVamana acts as an intermediary between clients and insurance companies. We do not underwrite policies. All policy terms, conditions, and claim approvals are governed by the respective insurer.\n\nYou agree to provide accurate information for any quote, application or claim. Misrepresentation may result in policy cancellation by the insurer.\n\nFor full terms, please contact our legal team.` },
-  privacy: { title: "Privacy Policy", body: `Vamana respects your privacy. We collect personal information solely to provide insurance advisory and policy services.\n\nWe collect: name, contact details, demographic data, financial information, and health information (where required for underwriting).\n\nWe use this data to: source quotes, issue policies, process claims and provide ongoing service. We share data only with insurers and regulatory authorities, never with marketers.\n\nYou may request access, correction or deletion of your personal data at any time by writing to privacy@vamanainsurance.in.` },
+  terms: { title: "Terms & Conditions", body: `These Terms govern your use of Vamana Insurance's website and services. By accessing our services, you agree to comply with all applicable laws and regulations of India, including the IRDAI (Insurance Brokers) Regulations.\n\nVamana acts as an intermediary between clients and insurance companies. We do not underwrite policies. All policy terms, conditions, and claim approvals are governed by the respective insurer.\n\nYou agree to provide accurate information for any quote, application or claim. Misrepresentation may result in policy cancellation by the insurer.\n\nPlease contact our Compliance Team.` },
+  privacy: { title: "Privacy Policy", body: `Vamana respects your privacy. We collect personal information solely to provide insurance advisory and policy services.\n\nWe collect: name, contact details, demographic data, financial information, and health information (where required for underwriting).\n\nWe use this data to: source quotes, issue policies, process claims and provide ongoing service. We share data only with insurers and regulatory authorities, never with marketers.\n\nYou may request access, correction or deletion of your personal data at any time by writing to our Compliance Team.` },
   refund: { title: "Refund Policy", body: `Insurance premium refunds are governed by the free-look period and cancellation terms of each insurer.\n\nFree-look period: Most policies allow a 15–30 day free-look window from issuance. You may cancel for a full refund minus stamp duty, medical and proportionate risk charges.\n\nMid-term cancellation: Refund is calculated on a short-period basis as per insurer's tariff.\n\nVamana does not charge any separate broker fee from clients; our remuneration is paid by insurers as commission.` },
-  shipping: { title: "Shipping Policy", body: `Vamana provides digital insurance services. Policy documents are typically delivered electronically (PDF) within 24–72 hours of policy issuance to your registered email.\n\nPhysical policy documents, where applicable, are dispatched directly by the insurer to the address on record, usually within 7–15 business days.\n\nNo shipping charges are levied by Vamana.` },
-  warranty: { title: "Warranty Policy", body: `Vamana provides advisory services and does not manufacture or sell physical goods. As such, no product warranty applies.\n\nOur service commitment: we promise unbiased advice, transparent disclosures and dedicated claim support throughout the policy lifecycle. If you are dissatisfied with our service, please contact grievance@vamanainsurance.in for resolution within 14 working days.` },
-  disclaimer: { title: "Disclaimer", body: `Information on this website is for general guidance only and does not constitute a contract of insurance. All policy benefits, exclusions and conditions are governed by the respective insurer's policy wording.\n\nInsurance is the subject matter of solicitation. Premium quotes are indicative and subject to underwriting approval. Past performance of any insurer is not indicative of future claim experience.\n\nVamana Insurance Broking Pvt. Ltd. — IRDAI Composite Broker License No. XXXXXX. Validity: as per IRDAI register.` },
+  disclaimer: { title: "Disclaimer", body: `Information on this website is for general guidance only and does not constitute a contract of insurance. All policy benefits, exclusions and conditions are governed by the respective insurer's policy wording.\n\nInsurance is the subject matter of solicitation. Premium quotes are indicative and subject to underwriting approval. Past performance of any insurer is not indicative of future claim experience.\n\nVamana Insurance — IRDAI Direct (Life & General) Broker License No. 1144.` },
 };
 
 export const Footer = () => {
@@ -987,10 +1101,11 @@ export const Footer = () => {
     <footer className="bg-primary text-white/80 pt-16 pb-8">
       <div className="container-x">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <div className="lg:col-span-2">
-            <div className="font-display font-extrabold text-xl text-white">VAMANA</div>
-            <p className="text-xs uppercase tracking-[0.2em] text-gold mt-1">Insurance Broking Pvt. Ltd.</p>
-            <p className="text-sm mt-5 leading-relaxed text-white/65 max-w-sm">
+          <div className="lg:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
+            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="inline-flex items-center justify-center bg-white p-3 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl shadow-sm transition-transform duration-300 hover:-translate-y-1">
+              <img src={logo} alt="Vamana Insurance" className="h-8 sm:h-10 lg:h-11 w-auto object-contain block" loading="lazy" />
+            </a>
+            <p className="text-sm mt-6 leading-relaxed text-white/65 max-w-sm">
               Independent insurance advisory built on transparency, expertise and lifelong client relationships.
             </p>
           </div>
@@ -1018,14 +1133,14 @@ export const Footer = () => {
             <h4 className="font-display font-bold text-white">Contact</h4>
             <ul className="mt-4 space-y-2.5 text-sm text-white/70">
               <li>+91 00000 00000</li>
-              <li>hello@vamanainsurance.in</li>
+              <li>solutions@vamanainsurance.in</li>
               <li>India</li>
             </ul>
           </div>
         </div>
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row gap-4 items-center justify-between text-xs text-white/55">
-          <p>© {new Date().getFullYear()} Vamana Insurance Broking Pvt. Ltd. All rights reserved.</p>
-          <p>IRDAI Broker License No. XXXXXX • Composite Broker • Insurance is the subject matter of solicitation.</p>
+          <p>© {new Date().getFullYear()} Vamana Insurance. All rights reserved.</p>
+          <p>IRDAI Direct (Life & General) Broker License No. 1144 • Insurance is the subject matter of solicitation.</p>
         </div>
       </div>
 
@@ -1043,7 +1158,7 @@ export const Footer = () => {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-gold"><Mail className="h-5 w-5" /></div>
               <div>
                 <p className="text-xs text-muted-foreground">Email</p>
-                <a href="mailto:careers@vamanainsurance.in" className="text-sm font-semibold text-primary hover:text-gold">careers@vamanainsurance.in</a>
+                <a href="mailto:solutions@vamanainsurance.in" className="text-sm font-semibold text-primary hover:text-gold">solutions@vamanainsurance.in</a>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 rounded-xl border border-border bg-secondary/40">
@@ -1055,7 +1170,7 @@ export const Footer = () => {
             </div>
           </div>
           <Button variant="default" asChild className="w-full sm:w-auto">
-            <a href="mailto:careers@vamanainsurance.in?subject=Application%20%E2%80%93%20Resume"><Briefcase className="h-4 w-4" /> Send Resume</a>
+            <a href="mailto:solutions@vamanainsurance.in?subject=Application%20%E2%80%93%20Resume"><Briefcase className="h-4 w-4" /> Send Resume</a>
           </Button>
         </div>
       </Modal>

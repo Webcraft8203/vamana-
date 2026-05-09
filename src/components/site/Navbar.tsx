@@ -91,7 +91,7 @@ export const Navbar = () => {
           className="flex items-center gap-2 shrink-0"
           aria-label="Go to top"
         >
-          <img src={logo} alt="Vamana Insurance Broking" className="h-9 sm:h-10 w-auto" />
+          <img src={logo} alt="Vamana Insurance" className="h-9 sm:h-10 w-auto" />
         </Link>
 
         <ul className="hidden lg:flex items-center gap-9">

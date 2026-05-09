@@ -3,7 +3,7 @@ import { Phone, Mail, Instagram, Linkedin, MessageCircle, ArrowUp, Plus } from "
 
 const PHONE = "+910000000000";
 const WHATSAPP = "910000000000";
-const EMAIL = "info@vamanainsurance.com";
+const EMAIL = "solutions@vamanainsurance.in";
 const INSTAGRAM = "https://instagram.com/";
 const LINKEDIN = "https://linkedin.com/";
 

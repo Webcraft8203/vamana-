@@ -23,7 +23,7 @@ const features = [
 export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: ServiceDetailPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `${title} — Vamana Insurance Broking`;
+    document.title = `${title} — Vamana Insurance`;
   }, [title]);
 
   return (

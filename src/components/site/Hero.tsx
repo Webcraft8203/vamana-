@@ -59,8 +59,8 @@ const slides: Slide[] = [
       <>Shielding heavy <span className="text-gradient-gold">machinery</span> and factory operations.</>
     ),
     subtitle: "Robust property, fire, and machinery breakdown cover to keep your plants running without interruption.",
-    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1200&q=80",
-    alt: "Engineers inspecting industrial machinery",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+    alt: "Industrial machinery in a modern factory",
     cta1: "Protect Your Plant",
     cta2: "Industrial Cover",
   },
@@ -70,8 +70,8 @@ const slides: Slide[] = [
       <>We stand with you during <span className="text-gradient-gold">claims</span>. Not just purchase.</>
     ),
     subtitle: "From documentation to insurer follow-ups, our dedicated team handles the heavy lifting and complex paperwork.",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Support agent assisting a client with claims",
+    image: "https://static.vecteezy.com/system/resources/thumbnails/069/689/533/small/a-woman-in-glasses-and-a-blue-shirt-free-photo.jpg",
+    alt: "Professional Indian corporate advisor consulting with a client",
     cta1: "Our Claim Process",
     cta2: "Contact Helpdesk",
   },
@@ -301,22 +301,27 @@ export const Hero = () => {
 
             {/* RIGHT */}
             <div 
-              className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[4/3] animate-hero-image order-1 lg:order-2"
+              className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[4/3] animate-hero-image order-1 lg:order-2 group"
               style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)`, transition: 'transform 0.4s ease-out' }}
             >
-              <div className="absolute inset-0 bg-gold/15 blur-[100px] rounded-full transform translate-x-8 -translate-y-8" />
+              {/* Soft shadow glow behind image */}
+              <div className="absolute inset-0 bg-gold/20 blur-[100px] rounded-full transform translate-x-8 -translate-y-8 transition-all duration-700 group-hover:bg-gold/30" />
               
-              <div className="relative rounded-[24px] overflow-hidden border border-white/10 w-full h-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+              <div className="relative rounded-[24px] overflow-hidden border border-white/10 w-full h-full shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-[1.02]">
                 <img
                   src={slides[index].image}
                   alt={slides[index].alt}
-                  className="w-full h-full object-cover object-center animate-image-pan"
+                  className="absolute inset-0 block w-full h-full object-cover object-center animate-image-pan transition-transform duration-700"
                   width={1024}
                   height={768}
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-primary/30 mix-blend-multiply pointer-events-none" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.6)_100%)] pointer-events-none" />
+                {/* Soft dark gradient overlays for readability */}
+                <div className="absolute inset-0 bg-primary/10 mix-blend-multiply pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.3)_100%)] pointer-events-none" />
+                
+                {/* Subtle glass reflection overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/5 opacity-50 pointer-events-none transition-opacity duration-700 group-hover:opacity-80" />
                 <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] rounded-[24px] pointer-events-none" />
               </div>
             </div>
