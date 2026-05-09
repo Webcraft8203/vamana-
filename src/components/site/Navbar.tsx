@@ -63,23 +63,6 @@ export const Navbar = () => {
         scrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200" : "bg-white border-b border-gray-100"
       }`}
     >
-      {/* Announcement marquee */}
-      <div className="bg-primary text-white overflow-hidden border-b border-white/10">
-        <div className="relative flex">
-          <div className="flex shrink-0 animate-marquee whitespace-nowrap py-2">
-            {[...announcements, ...announcements].map((a, i) => {
-              const Icon = a.icon;
-              return (
-                <span key={i} className="inline-flex items-center gap-2 px-8 text-xs sm:text-[13px] font-medium">
-                  <Icon className="h-3.5 w-3.5 text-gold shrink-0" />
-                  <span>{a.text}</span>
-                  <span className="text-gold/60 ml-6" aria-hidden>•</span>
-                </span>
-              );
-            })}
-          </div>
-        </div>
-      </div>
       <nav className="container-x flex h-20 items-center justify-between">
         <Link
           to="/"
