@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown, Shield, FileCheck, Briefcase, Sparkles, BadgeCheck, Headset, Clock } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Shield, FileCheck, Briefcase, Award, Headphones, Scale, Clock, ShieldCheck } from "lucide-react";
 import logo from "@/assets/vamana-logo.png";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +23,8 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const trustScrollRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,18 +51,32 @@ export const Navbar = () => {
     }
   };
 
-  const announcements = [
-    { icon: Sparkles, text: "New: Cyber Liability cover now available for SMEs" },
-    { icon: BadgeCheck, text: "IRDAI licensed broker — 100% transparent advisory" },
-    { icon: Headset, text: "Free 30-min consultation with a senior risk advisor" },
-    { icon: Clock, text: "98% claim settlement success rate — lifetime support" },
-    { icon: Sparkles, text: "Group health & corporate benefits — request a quote today" },
+  const trustItems = [
+    { icon: ShieldCheck, text: "IRDAI Licensed Broker" },
+    { icon: Award, text: "20+ Years Experience" },
+    { icon: Headphones, text: "Dedicated Claims Support" },
+    { icon: Scale, text: "Transparent Advisory" },
+    { icon: Clock, text: "Free 30-min Consultation" },
   ];
+
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      if (window.innerWidth >= 768) return;
+      if (trustScrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = trustScrollRef.current;
+        let nextScroll = scrollLeft + clientWidth * 0.8;
+        if (scrollLeft + clientWidth >= scrollWidth - 10) nextScroll = 0;
+        trustScrollRef.current.scrollTo({ left: nextScroll, behavior: "smooth" });
+      }
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200" : "bg-white border-b border-gray-100"
+        scrolled ? "bg-white/95 backdrop-blur-md" : "bg-white"
       }`}
     >
       <nav className="container-x flex h-20 items-center justify-between">
@@ -190,23 +206,39 @@ export const Navbar = () => {
           </div>
         </div>
       )}
-      {/* Announcement marquee (below navigation) */}
-      <div className="bg-primary text-white overflow-hidden border-t border-white/10">
-        <div className="relative flex">
-          <div className="flex shrink-0 animate-marquee whitespace-nowrap py-2">
-            {[...announcements, ...announcements].map((a, i) => {
-              const Icon = a.icon;
-              return (
-                <span key={i} className="inline-flex items-center gap-2 px-8 text-xs sm:text-[13px] font-medium">
-                  <Icon className="h-3.5 w-3.5 text-gold shrink-0" />
-                  <span>{a.text}</span>
-                  <span className="text-gold/60 ml-6" aria-hidden>•</span>
-                </span>
-              );
-            })}
-          </div>
+      {/* Premium Trust Bar (below navigation) */}
+      <div
+        className="bg-[#071B4D]/95 backdrop-blur-xl relative overflow-hidden border-t border-white/10"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Subtle background effects */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.08)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#071B4D] to-transparent z-10 pointer-events-none md:hidden" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#071B4D] to-transparent z-10 pointer-events-none md:hidden" />
+
+        <div
+          ref={trustScrollRef}
+          className="relative z-10 flex items-center md:justify-center overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-6 md:px-0 h-[44px] sm:h-[52px] lg:h-[56px] gap-3 md:gap-4 lg:gap-8"
+        >
+          {trustItems.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} className="flex items-center shrink-0 snap-center">
+                <div className="group relative flex items-center gap-2.5 lg:gap-3 px-3 py-1.5 lg:px-5 lg:py-2 rounded-full bg-white/[0.03] border border-white/5 hover:bg-white/[0.08] hover:border-gold/30 hover:-translate-y-[1px] hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-500 cursor-default overflow-hidden">
+                  <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                  <Icon className="h-3.5 w-3.5 lg:h-[18px] lg:w-[18px] text-gold shrink-0 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)] transition-all duration-500 relative z-10" />
+                  <span className="text-[11px] lg:text-[13px] font-semibold tracking-wide text-white/90 group-hover:text-white whitespace-nowrap relative z-10">{item.text}</span>
+                </div>
+                {i < trustItems.length - 1 && <div className="hidden md:block w-px h-4 bg-white/10 ml-4 lg:ml-8" />}
+              </div>
+            );
+          })}
         </div>
       </div>
+      {/* Subtle dark gradient blend to smooth the transition to the hero/page below */}
+      <div className="absolute top-full left-0 right-0 h-8 bg-gradient-to-b from-[#071B4D]/50 to-transparent pointer-events-none" />
     </header>
   );
 };

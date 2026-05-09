@@ -103,7 +103,7 @@ export const Hero = () => {
   return (
     <section
       /* 2. FULL-SCREEN HERO & 1. FIX TOP SPACING: min-h-[100dvh] + flex column structure to center content properly */
-      className="relative z-0 overflow-hidden bg-primary text-white min-h-[100dvh] flex flex-col pt-[80px]"
+      className="relative z-0 overflow-hidden bg-primary text-white min-h-[100dvh] flex flex-col pt-[124px] lg:pt-[136px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => { setPaused(false); setMousePos({ x: 0, y: 0 }); }}
       onMouseMove={handleMouseMove}

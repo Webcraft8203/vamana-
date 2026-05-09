@@ -29,7 +29,7 @@ export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: S
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-[124px] lg:pt-[136px]">
         {/* Breadcrumb */}
         <div className="bg-secondary/40 border-b border-border/60">
           <div className="container-x py-6 flex items-center gap-2 text-sm">

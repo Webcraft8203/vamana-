@@ -172,47 +172,50 @@ export const About = () => {
 /* ---------- LEADERSHIP / TEAM ---------- */
 export const Leadership = () => {
   const team = [
-    { name: "Rajesh Kumar", role: "Founder & Managing Director", desc: "25+ years steering insurance advisory with an uncompromising client-first philosophy." },
-    { name: "Anita Sharma", role: "Chief Risk Officer", desc: "Designs enterprise risk frameworks for corporates across manufacturing, IT and healthcare." },
-    { name: "Vikram Patel", role: "Head of Claims", desc: "Leads end-to-end claims advocacy with a 98% settlement success record." },
-    { name: "Priya Nair", role: "Director — Portfolio Advisory", desc: "Crafts long-term life and health portfolios tailored to family and wealth goals." },
-    { name: "Arun Mehta", role: "Head of Corporate Solutions", desc: "Specialises in group benefits, liability and marine covers for mid-to-large enterprises." },
-    { name: "Sneha Iyer", role: "Client Success Lead", desc: "Owns the lifetime advisor experience — onboarding, renewals and policy reviews." },
+    { name: "Mr. Ajit Mhaske", role: "Director & President", desc: "Leads strategic insurance advisory initiatives with decades of industry expertise." },
+    { name: "Mr. Udaysinh Gaikwad", role: "Director", desc: "Drives enterprise growth and corporate governance through robust risk frameworks." },
+    { name: "Mr. Vijay Khirdikar", role: "Principal Officer", desc: "Oversees regulatory compliance and core operational excellence aligned with IRDAI." },
+    { name: "Mr. Pankaj Pardeshi", role: "Associate Director", desc: "Spearheads business development and client acquisition across diverse corporate sectors." },
   ];
   return (
-    <section id="leadership" className="relative py-24 sm:py-32 bg-white overflow-hidden">
-      <div className="absolute inset-0 grid-faint opacity-[0.06] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
+    <section id="leadership" className="relative py-24 sm:py-32 bg-secondary/10 overflow-hidden">
+      {/* Subtle Premium Background */}
+      <div className="absolute inset-0 grid-faint opacity-[0.04] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-x relative z-10">
         <div className="max-w-2xl mx-auto text-center animate-fade-up">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Our Leadership</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.5rem] font-extrabold leading-tight text-primary">
-            The advisors behind <span className="text-gradient-gold">Vamana</span>.
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Executive Board</p>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold leading-tight text-primary">
+            Our Leadership
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
-            A close-knit team of insurance veterans, risk strategists and client-success specialists working as your lifetime advisors.
+          <div className="mt-6 mx-auto h-1 w-16 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full" />
+          <p className="mt-6 text-base text-muted-foreground leading-relaxed">
+            An executive team of insurance veterans and risk strategists dedicated to securing your enterprise.
           </p>
         </div>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-16 grid sm:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
           {team.map((m, i) => (
             <div
               key={m.name}
-              className="group relative rounded-2xl border border-border/60 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 animate-fade-up overflow-hidden"
-              style={{ animationDelay: `${i * 80}ms` }}
+              className="group relative bg-white/90 backdrop-blur-sm rounded-xl p-8 lg:p-10 shadow-sm hover:shadow-2xl hover:shadow-gold/10 border border-border/50 hover:border-gold/30 hover:-translate-y-1 transition-all duration-500 animate-fade-up overflow-hidden flex flex-col items-center sm:items-start text-center sm:text-left"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="flex items-center gap-3">
-                <span className="h-8 w-1 rounded-full bg-gold" />
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold">{m.role}</p>
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold/40 via-gold to-gold/40 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,175,55,0.04)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div className="relative z-10 flex flex-col items-center sm:items-start w-full">
+                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gold mb-3">{m.role}</p>
+                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-primary leading-tight">
+                  {m.name}
+                </h3>
+                <div className="mt-4 h-px w-10 bg-border/80 group-hover:w-full group-hover:bg-gold/30 transition-all duration-700 ease-out" />
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {m.desc}
+                </p>
               </div>
-              <h3 className="mt-4 font-display font-extrabold text-xl text-primary leading-tight">
-                {m.name}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {m.desc}
-              </p>
             </div>
           ))}
         </div>
