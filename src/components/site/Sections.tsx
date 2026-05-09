@@ -118,7 +118,7 @@ export const About = () => {
               </div>
               <div>
                 <p className="font-display font-extrabold text-2xl sm:text-3xl text-primary">100+</p>
-                <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">Combined Expertise</p>
+                <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">Years of Total Knowledge Pool</p>
               </div>
             </div>
           </div>
