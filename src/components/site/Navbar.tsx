@@ -190,6 +190,23 @@ export const Navbar = () => {
           </div>
         </div>
       )}
+      {/* Announcement marquee (below navigation) */}
+      <div className="bg-primary text-white overflow-hidden border-t border-white/10">
+        <div className="relative flex">
+          <div className="flex shrink-0 animate-marquee whitespace-nowrap py-2">
+            {[...announcements, ...announcements].map((a, i) => {
+              const Icon = a.icon;
+              return (
+                <span key={i} className="inline-flex items-center gap-2 px-8 text-xs sm:text-[13px] font-medium">
+                  <Icon className="h-3.5 w-3.5 text-gold shrink-0" />
+                  <span>{a.text}</span>
+                  <span className="text-gold/60 ml-6" aria-hidden>•</span>
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </header>
   );
 };
