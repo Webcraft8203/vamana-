@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Preloader } from "@/components/site/Preloader";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
-import { About, VisionMission, WhyVamana, Services, HowItWorks, FeatureHighlight, Insights, FinalCTA, Footer } from "@/components/site/Sections";
+import { About, Leadership, VisionMission, WhyVamana, Services, HowItWorks, FeatureHighlight, Insights, FinalCTA, Footer } from "@/components/site/Sections";
 import { FloatingActions } from "@/components/site/FloatingActions";
 
 
@@ -34,6 +34,7 @@ const Index = () => {
         <main>
           <Hero />
           <About />
+          <Leadership />
           <VisionMission />
           <WhyVamana />
           <Services />

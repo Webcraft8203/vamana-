@@ -162,6 +162,58 @@ export const About = () => {
   );
 };
 
+/* ---------- LEADERSHIP / TEAM ---------- */
+export const Leadership = () => {
+  const team = [
+    { name: "Rajesh Kumar", role: "Founder & Managing Director", desc: "25+ years steering insurance advisory with an uncompromising client-first philosophy." },
+    { name: "Anita Sharma", role: "Chief Risk Officer", desc: "Designs enterprise risk frameworks for corporates across manufacturing, IT and healthcare." },
+    { name: "Vikram Patel", role: "Head of Claims", desc: "Leads end-to-end claims advocacy with a 98% settlement success record." },
+    { name: "Priya Nair", role: "Director — Portfolio Advisory", desc: "Crafts long-term life and health portfolios tailored to family and wealth goals." },
+    { name: "Arun Mehta", role: "Head of Corporate Solutions", desc: "Specialises in group benefits, liability and marine covers for mid-to-large enterprises." },
+    { name: "Sneha Iyer", role: "Client Success Lead", desc: "Owns the lifetime advisor experience — onboarding, renewals and policy reviews." },
+  ];
+  return (
+    <section id="leadership" className="relative py-24 sm:py-32 bg-white overflow-hidden">
+      <div className="absolute inset-0 grid-faint opacity-[0.06] pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container-x relative z-10">
+        <div className="max-w-2xl mx-auto text-center animate-fade-up">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Our Leadership</p>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.5rem] font-extrabold leading-tight text-primary">
+            The advisors behind <span className="text-gradient-gold">Vamana</span>.
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+            A close-knit team of insurance veterans, risk strategists and client-success specialists working as your lifetime advisors.
+          </p>
+        </div>
+
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {team.map((m, i) => (
+            <div
+              key={m.name}
+              className="group relative rounded-2xl border border-border/60 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 animate-fade-up overflow-hidden"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="flex items-center gap-3">
+                <span className="h-8 w-1 rounded-full bg-gold" />
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold">{m.role}</p>
+              </div>
+              <h3 className="mt-4 font-display font-extrabold text-xl text-primary leading-tight">
+                {m.name}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {m.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ---------- VISION & MISSION ---------- */
 export const VisionMission = () => {
   const cards = [
