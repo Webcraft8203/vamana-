@@ -28,13 +28,13 @@ export const About = () => {
           <div className="absolute inset-0 bg-gold/15 blur-[80px] rounded-full transform -translate-x-4 translate-y-4" />
           
           <div className="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-border group h-full">
-            <img src={aboutImg} alt="Vamana team in consultation" className="w-full h-[500px] lg:h-full min-h-[500px] lg:min-h-[600px] object-cover transition-all duration-700 group-hover:scale-105 group-hover:rotate-1" loading="lazy" width={1024} height={1024} />
+            <img src={aboutImg} alt="Vamana team in consultation" className="w-full h-[500px] lg:h-full min-h-[500px] lg:min-h-[600px] object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.03]" loading="lazy" width={1024} height={1024} />
             
             {/* Subtle Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent pointer-events-none opacity-90" />
             
             {/* Floating Info Card 1 (Bottom Left) */}
-            <div className="absolute bottom-6 left-6 right-6 sm:right-auto bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] pointer-events-none transform transition-transform duration-500 group-hover:-translate-y-2">
+            <div className="absolute bottom-6 left-6 right-6 sm:right-auto bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] pointer-events-none transform transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-2 group-hover:translate-x-1">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold border border-gold/30">
                   <ShieldCheck className="h-6 w-6" />
@@ -47,7 +47,7 @@ export const About = () => {
             </div>
 
             {/* Floating Info Card 2 (Top Right) */}
-            <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-primary shadow-xl pointer-events-none transform transition-transform duration-500 group-hover:translate-y-2 group-hover:-translate-x-2 hidden sm:block">
+            <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-primary shadow-xl pointer-events-none transform transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-2 group-hover:-translate-x-2 hidden sm:block">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
                   <Users className="h-5 w-5" />
@@ -94,25 +94,25 @@ export const About = () => {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-up" style={{ animationDelay: "400ms" }}>
-            <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
+            <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(212,175,55,0.5)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <a href="#contact">Talk to an Advisor</a>
             </Button>
-            <Button variant="outline" size="lg" asChild className="hover:-translate-y-1 hover:bg-secondary/50 hover:shadow-md transition-all duration-300">
+            <Button variant="outline" size="lg" asChild className="hover:-translate-y-1 hover:bg-secondary/50 hover:shadow-sm transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <a href="#services">Learn More</a>
             </Button>
             <a
               href="#leadership"
-              className="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-gold transition-colors"
+              className="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
             >
               Meet our leadership
-              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span aria-hidden className="transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-x-1">→</span>
             </a>
           </div>
 
           {/* Stats Row */}
           <div className="mt-12 grid sm:grid-cols-2 gap-5 animate-fade-up" style={{ animationDelay: "500ms" }}>
-            <div className="bg-white rounded-2xl border border-border/60 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex items-center gap-4 group">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors duration-300">
+            <div className="bg-white rounded-2xl border border-border/60 p-5 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(212,175,55,0.15)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center gap-4 group">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
                 <Briefcase className="h-5 w-5" />
               </div>
               <div>
@@ -120,8 +120,8 @@ export const About = () => {
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">Years Experience</p>
               </div>
             </div>
-            <div className="bg-white rounded-2xl border border-border/60 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex items-center gap-4 group">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors duration-300">
+            <div className="bg-white rounded-2xl border border-border/60 p-5 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(212,175,55,0.15)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center gap-4 group">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
                 <Users className="h-5 w-5" />
               </div>
               <div>
@@ -141,14 +141,14 @@ export const About = () => {
               return (
               <div 
                 key={title} 
-                className={`rounded-2xl border p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group animate-fade-up ${
+                className={`rounded-2xl border p-6 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(212,175,55,0.15)] hover:-translate-y-1 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group animate-fade-up ${
                   isHighlighted 
                     ? "bg-primary border-primary text-white" 
-                    : "bg-white border-border/60 text-primary"
+                    : "bg-white border-border/60 text-primary hover:border-gold/30"
                 }`}
                 style={{ animationDelay: `${700 + (i * 100)}ms` }}
               >
-                <div className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300 ${
+                <div className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
                   isHighlighted 
                     ? "bg-white/10 text-gold group-hover:bg-white/20" 
                     : "bg-secondary text-primary group-hover:bg-primary group-hover:text-gold"
@@ -370,16 +370,16 @@ export const VisionMission = () => {
             return (
             <div 
               key={eyebrow} 
-              className={`group relative overflow-hidden rounded-[2rem] border p-10 sm:p-12 animate-fade-up transition-all duration-500 hover:-translate-y-2 ${
+              className={`group relative overflow-hidden rounded-[2rem] border p-10 sm:p-12 animate-fade-up transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-1.5 ${
                 isHighlighted 
-                  ? "bg-primary border-gold/20 text-white shadow-xl hover:shadow-[0_20px_40px_rgba(212,175,55,0.15)]" 
-                  : "bg-gradient-to-br from-white to-secondary/30 border-border/60 text-primary shadow-sm hover:shadow-xl hover:border-gold/30 hover:shadow-gold/5"
+                  ? "bg-primary border-gold/20 text-white shadow-xl hover:shadow-[0_25px_50px_-12px_rgba(212,175,55,0.25)] hover:border-gold/40" 
+                  : "bg-gradient-to-br from-white to-secondary/30 border-border/60 text-primary shadow-sm hover:shadow-[0_25px_50px_-12px_rgba(212,175,55,0.15)] hover:border-gold/30"
               }`}
               style={{ animationDelay: `${150 + (i * 150)}ms` }}
             >
-              <div className={`absolute -top-16 -right-16 h-48 w-48 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${isHighlighted ? "bg-white/10" : "bg-gold/15"}`} />
+              <div className={`absolute -top-16 -right-16 h-48 w-48 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none ${isHighlighted ? "bg-white/10" : "bg-gold/15"}`} />
               
-              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 ${
+              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.08] group-hover:rotate-3 ${
                 isHighlighted ? "bg-white/10 text-gold group-hover:bg-gold/20" : "bg-white border border-border shadow-sm text-primary group-hover:bg-primary group-hover:text-gold"
               }`}>
                 <Icon className="h-7 w-7" />
@@ -393,7 +393,7 @@ export const VisionMission = () => {
 
         {/* CTA Section */}
         <div className="mt-16 flex justify-center animate-fade-up" style={{ animationDelay: "500ms" }}>
-          <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
+          <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(212,175,55,0.5)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
             <a href="#contact">Talk to an Advisor</a>
           </Button>
         </div>
@@ -455,14 +455,15 @@ export const WhyVamana = () => {
             {points.map(({ icon: Icon, title, desc }, i) => (
               <div 
                 key={title} 
-                className="w-[85vw] min-w-[85vw] sm:w-auto sm:min-w-0 shrink-0 snap-center bg-white/80 backdrop-blur-md rounded-[2rem] border border-border/60 p-8 shadow-sm hover:shadow-xl hover:shadow-gold/10 hover:border-gold/30 hover:-translate-y-2 transition-all duration-500 animate-fade-up h-full group" 
+                className="w-[85vw] min-w-[85vw] sm:w-auto sm:min-w-0 shrink-0 snap-center bg-white/80 backdrop-blur-md rounded-[2rem] border border-border/60 p-8 shadow-sm hover:shadow-[0_20px_50px_-12px_rgba(212,175,55,0.15)] hover:border-gold/40 hover:-translate-y-1.5 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] animate-fade-up h-full group relative overflow-hidden" 
                 style={{ animationDelay: `${150 + (i * 150)}ms` }}
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none" />
+                <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-110 group-hover:-rotate-3">
                   <Icon className="h-7 w-7" />
                 </div>
-                <h3 className="mt-8 font-display font-bold text-xl text-primary transition-colors duration-300">{title}</h3>
-                <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground">{desc}</p>
+                <h3 className="relative z-10 mt-8 font-display font-bold text-xl text-primary transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-gold">{title}</h3>
+                <p className="relative z-10 mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>
@@ -473,7 +474,7 @@ export const WhyVamana = () => {
           {points.map((_, i) => (
             <div 
               key={i} 
-              className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-6 bg-gold' : 'w-2 bg-primary/20'}`}
+              className={`h-1.5 rounded-full transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${activeIndex === i ? 'w-6 bg-gold' : 'w-2 bg-primary/20'}`}
             />
           ))}
         </div>
@@ -608,19 +609,19 @@ export const Services = () => {
 const ServiceCard = ({ icon: Icon, title, desc, delay, onClick }: any) => (
   <button 
     onClick={onClick}
-    className="text-left w-full group relative bg-white rounded-2xl border border-border/60 p-7 shadow-sm hover:shadow-2xl hover:border-gold/30 hover:shadow-gold/15 hover:-translate-y-2 transition-all duration-500 animate-fade-up h-full flex flex-col focus:outline-none focus:ring-2 focus:ring-gold/50 overflow-hidden" 
+    className="text-left w-full group relative bg-white rounded-2xl border border-border/60 p-7 shadow-sm hover:shadow-[0_20px_50px_-12px_rgba(212,175,55,0.15)] hover:border-gold/30 hover:-translate-y-1.5 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] animate-fade-up h-full flex flex-col focus:outline-none focus:ring-2 focus:ring-gold/50 overflow-hidden" 
     style={{ animationDelay: `${delay}ms` }}
   >
-    <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none" />
 
-    <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500">
+    <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold group-hover:scale-[1.08] group-hover:-rotate-3 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
       <Icon className="h-6 w-6" />
     </div>
-    <h4 className="relative z-10 mt-6 font-display font-bold text-xl text-primary group-hover:text-gold transition-colors duration-300">{title}</h4>
+    <h4 className="relative z-10 mt-6 font-display font-bold text-xl text-primary group-hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">{title}</h4>
     <p className="relative z-10 mt-2.5 text-sm leading-relaxed text-muted-foreground flex-1">{desc}</p>
     
-    <div className="relative z-10 mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary group-hover:text-gold transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0">
-      Explore <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+    <div className="relative z-10 mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary group-hover:text-gold transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0">
+      Explore <ArrowRight className="h-4 w-4 transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-x-1" />
     </div>
   </button>
 );
@@ -744,8 +745,8 @@ const ServiceModal = ({ activeService, onClose }: { activeService: any; onClose:
                   { icon: FileCheck, label: "Customized Policies" },
                   { icon: Handshake, label: "Long-term Support" },
                 ].map((b, i) => (
-                  <div key={i} className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 p-3 sm:p-4 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 hover:border-gold/30 hover:shadow-[0_10px_30px_rgba(212,175,55,0.1)] group/card animate-stagger" style={{ animationDelay: `${600 + i * 100}ms` }}>
-                    <b.icon className="h-5 w-5 text-gold shrink-0 group-hover/card:scale-110 transition-transform duration-300" />
+                  <div key={i} className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 p-3 sm:p-4 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-white/10 hover:-translate-y-1 hover:border-gold/30 hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] group/card animate-stagger" style={{ animationDelay: `${600 + i * 100}ms` }}>
+                    <b.icon className="h-5 w-5 text-gold shrink-0 group-hover/card:scale-[1.15] transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]" />
                     <span className="text-xs sm:text-sm font-semibold text-white">{b.label}</span>
                   </div>
                 ))}
@@ -753,10 +754,10 @@ const ServiceModal = ({ activeService, onClose }: { activeService: any; onClose:
 
               {/* CTA Section */}
               <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-4 animate-stagger" style={{ animationDelay: `1000ms` }}>
-                <Button variant="gold" size="xl" asChild className="w-full sm:w-auto shadow-lg shadow-gold/20 hover:-translate-y-0.5 hover:shadow-gold/30 transition-all text-sm font-bold">
+                <Button variant="gold" size="xl" asChild className="w-full sm:w-auto shadow-[0_8px_20px_rgba(212,175,55,0.2)] hover:-translate-y-1 hover:shadow-[0_15px_30px_-5px_rgba(212,175,55,0.4)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] text-sm font-bold">
                   <a href="#contact" onClick={onClose}>Talk to an Advisor <ArrowRight className="h-4 w-4 ml-2" /></a>
                 </Button>
-                <Button variant="outlineLight" size="xl" asChild className="w-full sm:w-auto hover:bg-white/10 hover:-translate-y-0.5 transition-all text-sm font-bold">
+                <Button variant="outlineLight" size="xl" asChild className="w-full sm:w-auto hover:bg-white/10 hover:-translate-y-1 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] text-sm font-bold border-white/30 hover:border-white/60">
                   <a href="#quote" onClick={onClose}>Get Free Consultation</a>
                 </Button>
               </div>
@@ -828,17 +829,17 @@ export const HowItWorks = () => {
           {steps.map((s, i) => (
             <div 
               key={s.title} 
-              className={`group relative rounded-[2rem] border border-white/5 bg-white/[0.03] backdrop-blur-xl p-8 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:border-white/20 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] hover:bg-white/10 will-change-transform ${inView ? 'animate-fade-up' : 'opacity-0'}`} 
+              className={`group relative rounded-[2rem] border border-white/5 bg-white/[0.03] backdrop-blur-xl p-8 transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-1.5 hover:scale-[1.015] hover:border-gold/30 hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] hover:bg-white/10 will-change-transform ${inView ? 'animate-fade-up' : 'opacity-0'}`} 
               style={{ animationDelay: inView ? `${i * 150}ms` : '0ms', animationFillMode: 'forwards' }}
             >
               <span 
-                className={`inline-block font-display text-4xl font-extrabold text-gold/60 transition-all duration-300 group-hover:text-gold group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(212,175,55,0.5)] ${inView ? 'animate-number-scale' : 'opacity-0'}`}
+                className={`inline-block font-display text-4xl font-extrabold text-gold/60 transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-gold group-hover:scale-[1.15] group-hover:-rotate-3 group-hover:drop-shadow-[0_0_15px_rgba(212,175,55,0.5)] ${inView ? 'animate-number-scale' : 'opacity-0'}`}
                 style={{ animationDelay: inView ? `${150 + (i * 150)}ms` : '0ms', animationFillMode: 'forwards' }}
               >
                 0{i + 1}
               </span>
-              <h3 className="mt-6 font-display font-bold text-xl text-white/90 group-hover:text-white transition-colors">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/60 group-hover:text-white/80 transition-colors">{s.desc}</p>
+              <h3 className="mt-6 font-display font-bold text-xl text-white/90 group-hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-white/60 group-hover:text-white/90 transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">{s.desc}</p>
             </div>
           ))}
         </div>
@@ -867,14 +868,14 @@ export const FeatureHighlight = () => {
         <div className="relative order-2 lg:order-1 h-full w-full max-w-lg mx-auto lg:max-w-none animate-fade-up" style={{ animationDelay: "100ms" }}>
           <div className="absolute inset-0 bg-gold/15 blur-[80px] rounded-full transform -translate-x-4 translate-y-4 pointer-events-none" />
           
-          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-border group h-full">
-            <img src={advisorImg} alt="Vamana advisor consulting client" className="w-full h-[500px] lg:h-full min-h-[500px] lg:min-h-[600px] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={1024} height={1024} />
+          <div className="relative rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.2)] ring-1 ring-border group h-full">
+            <img src={advisorImg} alt="Vamana advisor consulting client" className="w-full h-[500px] lg:h-full min-h-[500px] lg:min-h-[600px] object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.03]" loading="lazy" width={1024} height={1024} />
             
             {/* Subtle Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent pointer-events-none opacity-90" />
             
             {/* Floating Info Card */}
-            <div className="absolute bottom-6 left-6 right-6 sm:right-auto bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] pointer-events-none transform transition-transform duration-500 group-hover:-translate-y-2">
+            <div className="absolute bottom-6 left-6 right-6 sm:right-auto bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] pointer-events-none transform transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-2 group-hover:translate-x-1">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold border border-gold/30">
                   <ShieldCheck className="h-6 w-6" />
@@ -908,13 +909,13 @@ export const FeatureHighlight = () => {
 
           {/* Premium Trust Badges */}
           <div className="mt-8 flex flex-wrap items-center gap-3 animate-fade-up" style={{ animationDelay: "100ms" }}>
-            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-300 px-4 py-2 text-xs font-semibold text-primary">
+            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:-translate-y-[1px] hover:shadow-[0_8px_16px_rgba(212,175,55,0.12)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] px-4 py-2 text-xs font-semibold text-primary cursor-default">
               <Briefcase className="h-3.5 w-3.5 text-gold" /> 20+ Years Industry Experience
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-300 px-4 py-2 text-xs font-semibold text-primary">
+            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:-translate-y-[1px] hover:shadow-[0_8px_16px_rgba(212,175,55,0.12)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] px-4 py-2 text-xs font-semibold text-primary cursor-default">
               <ShieldCheck className="h-3.5 w-3.5 text-gold" /> IRDAI Licensed Broker
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-300 px-4 py-2 text-xs font-semibold text-primary">
+            <span className="inline-flex items-center gap-2 rounded-full bg-secondary/80 hover:bg-white border border-border/50 hover:border-gold/30 hover:-translate-y-[1px] hover:shadow-[0_8px_16px_rgba(212,175,55,0.12)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] px-4 py-2 text-xs font-semibold text-primary cursor-default">
               <Handshake className="h-3.5 w-3.5 text-gold" /> Client-First Advisory
             </span>
           </div>
@@ -925,13 +926,14 @@ export const FeatureHighlight = () => {
             {items.map(({ icon: Icon, title, desc }, i) => (
               <div 
                 key={title} 
-                className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-xl hover:border-gold/30 hover:shadow-gold/10 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 group animate-fade-up"
+                className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(212,175,55,0.15)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center gap-4 group animate-fade-up relative overflow-hidden"
                 style={{ animationDelay: `${300 + (i * 100)}ms` }}
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold group-hover:scale-110 transition-all duration-300">
-                  <Icon className="h-5 w-5" />
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none" />
+                <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover:bg-primary group-hover:text-gold group-hover:scale-[1.08] group-hover:-rotate-3 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
+                  <Icon className="h-6 w-6" />
                 </div>
-                <div>
+                <div className="relative z-10">
                   <h4 className="font-display font-bold text-lg text-primary">{title}</h4>
                   <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{desc}</p>
                 </div>
@@ -997,14 +999,14 @@ export const Insights = () => {
             {blogPosts.map((p, i) => (
               <article 
                 key={p.id} 
-                className="w-[85vw] min-w-[85vw] sm:w-auto sm:min-w-0 shrink-0 snap-center group relative rounded-2xl sm:rounded-[2rem] overflow-hidden border border-border/60 bg-white shadow-sm hover:shadow-2xl hover:border-gold/30 hover:shadow-gold/15 hover:-translate-y-2 transition-all duration-500 animate-fade-up flex flex-col cursor-pointer" 
+                className="w-[85vw] min-w-[85vw] sm:w-auto sm:min-w-0 shrink-0 snap-center group relative rounded-2xl sm:rounded-[2rem] overflow-hidden border border-border/60 bg-white shadow-sm hover:shadow-[0_25px_50px_-12px_rgba(212,175,55,0.2)] hover:border-gold/40 hover:-translate-y-1.5 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] animate-fade-up flex flex-col cursor-pointer" 
                 style={{ animationDelay: `${100 + i * 150}ms` }} 
                 onClick={() => setOpenId(p.id)}
               >
                 {/* Image Section */}
                 <div className="relative h-[180px] sm:h-[220px] w-full overflow-hidden bg-primary/5">
-                  <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05] group-hover:brightness-110" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.03] group-hover:brightness-110" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none" />
                   <span className="absolute top-4 left-4 sm:top-5 sm:left-5 rounded-full bg-gold/90 backdrop-blur-md text-primary text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 shadow-lg shadow-black/20">
                     {p.tag}
                   </span>
@@ -1012,7 +1014,7 @@ export const Insights = () => {
 
                 {/* Content Section */}
                 <div className="p-6 sm:p-8 flex flex-col flex-1 relative z-10">
-                  <h3 className="font-display font-extrabold text-lg sm:text-xl text-primary leading-snug line-clamp-2 group-hover:text-gold transition-colors duration-300">
+                  <h3 className="font-display font-extrabold text-lg sm:text-xl text-primary leading-snug line-clamp-2 group-hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
                     {p.title}
                   </h3>
                   <div className="mt-4 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
@@ -1020,8 +1022,8 @@ export const Insights = () => {
                     <span>{p.read}</span>
                   </div>
                   <div className="mt-auto pt-6 flex items-center justify-between">
-                    <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider text-primary group-hover:text-gold transition-colors duration-300 flex items-center gap-2">
-                      Read Blog <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                    <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider text-primary group-hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center gap-2">
+                      Read Blog <ArrowRight className="h-4 w-4 transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-x-1.5" />
                     </span>
                   </div>
                 </div>
@@ -1041,7 +1043,7 @@ export const Insights = () => {
               <h4 className="font-display font-bold text-primary mb-4">Other Blogs</h4>
               <div className="grid sm:grid-cols-2 gap-3">
                 {blogPosts.filter((p) => p.id !== active.id).map((p) => (
-                  <button key={p.id} onClick={() => setOpenId(p.id)} className="text-left p-4 rounded-xl border border-border hover:border-gold/50 hover:bg-secondary/50 transition-colors">
+                  <button key={p.id} onClick={() => setOpenId(p.id)} className="text-left p-4 rounded-xl border border-border hover:border-gold/50 hover:shadow-[0_8px_20px_-4px_rgba(212,175,55,0.15)] hover:-translate-y-0.5 hover:bg-secondary/50 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-gold">{p.tag}</span>
                     <p className="mt-1 font-display font-semibold text-sm text-primary leading-snug">{p.title}</p>
                     <p className="mt-1 text-xs text-muted-foreground">{p.read}</p>
@@ -1071,10 +1073,10 @@ export const FinalCTA = () => (
             Get a free, no-obligation consultation with a Vamana advisor. We'll review your existing cover and show you exactly where you stand.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Button variant="gold" size="xl" asChild>
-              <a href="tel:+910000000000">Call an Advisor <ArrowRight className="h-4 w-4" /></a>
+            <Button variant="gold" size="xl" asChild className="hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(212,175,55,0.5)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
+              <a href="tel:+910000000000">Call an Advisor <ArrowRight className="h-4 w-4 ml-1.5" /></a>
             </Button>
-            <Button variant="outlineLight" size="xl" asChild>
+            <Button variant="outlineLight" size="xl" asChild className="hover:bg-white/10 hover:-translate-y-1 border-white/30 hover:border-white/60 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <a href="mailto:solutions@vamanainsurance.in">Email Us</a>
             </Button>
           </div>
@@ -1112,11 +1114,11 @@ export const Footer = () => {
           <div>
             <h4 className="font-display font-bold text-white">Company</h4>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li><a href="#about" className="hover:text-gold transition-colors">About Us</a></li>
-              <li><a href="#why" className="hover:text-gold transition-colors">Why Vamana</a></li>
-              <li><a href="#services" className="hover:text-gold transition-colors">Services</a></li>
-              <li><a href="#insights" className="hover:text-gold transition-colors">Insights</a></li>
-              <li><button onClick={() => setCareersOpen(true)} className="hover:text-gold transition-colors">Careers</button></li>
+              <li><a href="#about" className="hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">About Us</a></li>
+              <li><a href="#why" className="hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">Why Vamana</a></li>
+              <li><a href="#services" className="hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">Services</a></li>
+              <li><a href="#insights" className="hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">Insights</a></li>
+              <li><button onClick={() => setCareersOpen(true)} className="hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">Careers</button></li>
             </ul>
           </div>
           <div>
@@ -1124,7 +1126,7 @@ export const Footer = () => {
             <ul className="mt-4 space-y-2.5 text-sm">
               {Object.entries(legalDocs).map(([key, doc]) => (
                 <li key={key}>
-                  <button onClick={() => setOpenLegal(key)} className="text-left hover:text-gold transition-colors">{doc.title}</button>
+                  <button onClick={() => setOpenLegal(key)} className="text-left hover:text-gold transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">{doc.title}</button>
                 </li>
               ))}
             </ul>

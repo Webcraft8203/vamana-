@@ -75,7 +75,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
         scrolled ? "bg-white/95 backdrop-blur-md" : "bg-white"
       }`}
     >
@@ -101,13 +101,13 @@ export const Navbar = () => {
                 <>
                   <button
                     onClick={(e) => handleHashLink(e, l.href)}
-                    className="flex items-center gap-1 text-sm font-semibold text-gray-600 hover:text-gray-900 transition-colors py-2"
+                    className="flex items-center gap-1 text-sm font-semibold text-gray-600 hover:text-primary transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] py-2 group-hover:text-primary"
                   >
                     {l.label}
-                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-180" />
+                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:rotate-180" />
                   </button>
                   {/* Dropdown */}
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[320px] opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-[250ms] ease-out">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[320px] opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
                     <div className="rounded-2xl bg-white/95 backdrop-blur-xl shadow-2xl border border-gray-100 ring-1 ring-black/5 overflow-hidden p-2">
                       {services.map((s) => {
                         const Icon = s.icon;
@@ -115,9 +115,9 @@ export const Navbar = () => {
                           <Link
                             key={s.href}
                             to={s.href}
-                            className="flex items-start gap-3 p-3 rounded-xl hover:bg-gold/10 transition-colors group/item"
+                            className="flex items-start gap-3 p-3 rounded-xl hover:bg-secondary/50 hover:shadow-sm transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group/item"
                           >
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary group-hover/item:bg-primary group-hover/item:text-gold transition-colors">
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary group-hover/item:bg-primary group-hover/item:text-gold transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
                               <Icon className="h-5 w-5" />
                             </div>
                             <div>
@@ -134,7 +134,7 @@ export const Navbar = () => {
                 <a
                   href={l.href}
                   onClick={(e) => handleHashLink(e, l.href)}
-                  className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-sm font-semibold text-gray-600 hover:text-primary transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
                 >
                   {l.label}
                 </a>
@@ -144,10 +144,10 @@ export const Navbar = () => {
         </ul>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+910000000000" className="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-gray-900">
+          <a href="tel:+910000000000" className="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
             <Phone className="h-4 w-4 text-gold" /> +91 00000 00000
           </a>
-          <Button variant="gold" size="sm" asChild className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+          <Button variant="gold" size="sm" asChild className="transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(212,175,55,0.3)] hover:brightness-105">
             <a href="/#contact" onClick={(e) => handleHashLink(e, "/#contact")}>Get Free Quote</a>
           </Button>
         </div>
@@ -226,9 +226,9 @@ export const Navbar = () => {
             const Icon = item.icon;
             return (
               <div key={i} className="flex items-center shrink-0 snap-center">
-                <div className="group relative flex items-center gap-2.5 lg:gap-3 px-3 py-1.5 lg:px-5 lg:py-2 rounded-full bg-white/[0.03] border border-white/5 hover:bg-white/[0.08] hover:border-gold/30 hover:-translate-y-[1px] hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-500 cursor-default overflow-hidden">
-                  <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                  <Icon className="h-3.5 w-3.5 lg:h-[18px] lg:w-[18px] text-gold shrink-0 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)] transition-all duration-500 relative z-10" />
+                <div className="group relative flex items-center gap-2.5 lg:gap-3 px-3 py-1.5 lg:px-5 lg:py-2 rounded-full bg-white/[0.03] border border-white/5 hover:bg-white/[0.08] hover:border-gold/30 hover:-translate-y-[1px] hover:shadow-[0_8px_16px_rgba(212,175,55,0.12)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default overflow-hidden">
+                  <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] blur-xl" />
+                  <Icon className="h-3.5 w-3.5 lg:h-[18px] lg:w-[18px] text-gold shrink-0 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] relative z-10" />
                   <span className="text-[11px] lg:text-[13px] font-semibold tracking-wide text-white/90 group-hover:text-white whitespace-nowrap relative z-10">{item.text}</span>
                 </div>
                 {i < trustItems.length - 1 && <div className="hidden md:block w-px h-4 bg-white/10 ml-4 lg:ml-8" />}

@@ -58,7 +58,7 @@ export const QuoteSection = () => {
 
         {/* RIGHT — form */}
         <div className="relative">
-          <div className="rounded-3xl bg-card border border-border shadow-card p-6 sm:p-8">
+          <div className="rounded-3xl bg-card border border-border shadow-card p-6 sm:p-8 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-[0_25px_50px_-12px_rgba(212,175,55,0.15)] hover:border-gold/30">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-display font-bold text-xl text-primary">Request a callback</h3>
@@ -84,7 +84,7 @@ export const QuoteSection = () => {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="e.g. Rohan Sharma"
-                    className="input-base"
+                    className="input-base transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] focus:border-gold focus:ring-1 focus:ring-gold/50 hover:border-border/80"
                   />
                 </Field>
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -95,7 +95,7 @@ export const QuoteSection = () => {
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       placeholder="+91"
                       inputMode="numeric"
-                      className="input-base"
+                      className="input-base transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] focus:border-gold focus:ring-1 focus:ring-gold/50 hover:border-border/80"
                     />
                   </Field>
                   <Field label="Email">
@@ -104,7 +104,7 @@ export const QuoteSection = () => {
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder="you@example.com"
-                      className="input-base"
+                      className="input-base transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] focus:border-gold focus:ring-1 focus:ring-gold/50 hover:border-border/80"
                     />
                   </Field>
                 </div>
@@ -112,7 +112,7 @@ export const QuoteSection = () => {
                   <select
                     value={form.type}
                     onChange={(e) => setForm({ ...form, type: e.target.value })}
-                    className="input-base"
+                    className="input-base transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] focus:border-gold focus:ring-1 focus:ring-gold/50 hover:border-border/80"
                   >
                     <option>Health Insurance</option>
                     <option>Motor Insurance</option>
@@ -122,7 +122,7 @@ export const QuoteSection = () => {
                   </select>
                 </Field>
 
-                <Button variant="gold" size="lg" className="w-full mt-2">
+                <Button variant="gold" size="lg" className="w-full mt-2 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(212,175,55,0.5)]">
                   Get my free quote
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">

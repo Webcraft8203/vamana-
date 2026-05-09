@@ -283,12 +283,12 @@ export const Hero = () => {
               <div className="mt-10 animate-hero-fade" style={{ animationDelay: "300ms" }}>
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
                   <div className="relative group/cta inline-block w-full sm:w-auto">
-                    <div className="absolute inset-0 bg-gold/20 blur-xl rounded-full opacity-40 group-hover/cta:opacity-80 transition-opacity duration-500 pointer-events-none" />
-                    <Button variant="gold" size="lg" asChild className="relative w-full sm:w-auto font-semibold shadow-none hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
+                    <div className="absolute inset-0 bg-gold/20 blur-xl rounded-full opacity-40 group-hover/cta:opacity-80 transition-opacity duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none" />
+                    <Button variant="gold" size="lg" asChild className="relative w-full sm:w-auto font-semibold shadow-none hover:-translate-y-1 hover:shadow-[0_8px_20px_-4px_rgba(212,175,55,0.4)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
                       <a href="#contact">{slides[index].cta1}</a>
                     </Button>
                   </div>
-                  <Button variant="ghost" size="lg" asChild className="w-full sm:w-auto text-white/70 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition-all font-semibold">
+                  <Button variant="ghost" size="lg" asChild className="w-full sm:w-auto text-white/70 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/20 hover:shadow-[0_8px_20px_-4px_rgba(255,255,255,0.05)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] font-semibold">
                     <a href="#contact">{slides[index].cta2}</a>
                   </Button>
                 </div>
@@ -301,17 +301,17 @@ export const Hero = () => {
 
             {/* RIGHT */}
             <div 
-              className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[4/3] animate-hero-image order-1 lg:order-2 group"
+              className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[4/3] animate-hero-image order-1 lg:order-2 group/image"
               style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)`, transition: 'transform 0.4s ease-out' }}
             >
               {/* Soft shadow glow behind image */}
-              <div className="absolute inset-0 bg-gold/20 blur-[100px] rounded-full transform translate-x-8 -translate-y-8 transition-all duration-700 group-hover:bg-gold/30" />
+              <div className="absolute inset-0 bg-gold/20 blur-[100px] rounded-full transform translate-x-8 -translate-y-8 transition-all duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/image:bg-gold/30 group-hover/image:translate-x-6 group-hover/image:-translate-y-6" />
               
-              <div className="relative rounded-[24px] overflow-hidden border border-white/10 w-full h-full shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-[1.02]">
+              <div className="relative rounded-[24px] overflow-hidden border border-white/10 w-full h-full shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-transform duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/image:scale-[1.015]">
                 <img
                   src={slides[index].image}
                   alt={slides[index].alt}
-                  className="absolute inset-0 block w-full h-full object-cover object-center animate-image-pan transition-transform duration-700"
+                  className="absolute inset-0 block w-full h-full object-cover object-center animate-image-pan transition-transform duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
                   width={1024}
                   height={768}
                   loading="eager"
@@ -321,7 +321,7 @@ export const Hero = () => {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.3)_100%)] pointer-events-none" />
                 
                 {/* Subtle glass reflection overlay */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/5 opacity-50 pointer-events-none transition-opacity duration-700 group-hover:opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/5 opacity-50 pointer-events-none transition-opacity duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/image:opacity-80" />
                 <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] rounded-[24px] pointer-events-none" />
               </div>
             </div>
@@ -336,7 +336,7 @@ export const Hero = () => {
                 key={i}
                 onClick={() => goTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? "w-8 bg-gold" : "w-4 bg-white/25 hover:bg-white/40"}`}
+                className={`h-1.5 rounded-full transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${i === index ? "w-8 bg-gold shadow-[0_0_8px_rgba(212,175,55,0.6)]" : "w-4 bg-white/25 hover:bg-white/50"}`}
               />
             ))}
           </div>
@@ -344,14 +344,14 @@ export const Hero = () => {
             <button
               onClick={() => goTo(index - 1)}
               aria-label="Previous slide"
-              className="h-10 w-10 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 flex items-center justify-center transition"
+              className="h-10 w-10 rounded-full border border-white/15 bg-white/5 hover:bg-white/15 hover:shadow-[0_4px_12px_rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-x-0.5"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={() => goTo(index + 1)}
               aria-label="Next slide"
-              className="h-10 w-10 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 flex items-center justify-center transition"
+              className="h-10 w-10 rounded-full border border-white/15 bg-white/5 hover:bg-white/15 hover:shadow-[0_4px_12px_rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:translate-x-0.5"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -364,9 +364,9 @@ export const Hero = () => {
         <div className="container-x py-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:divide-x divide-white/[0.05] text-left">
             {trustFeatures.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3 lg:pl-6 first:lg:pl-0 group opacity-70 hover:opacity-100 transition-opacity duration-300">
-                <Icon className="h-5 w-5 text-gold shrink-0" />
-                <span className="text-xs font-medium leading-snug text-white/80 max-w-[160px]">{label}</span>
+              <div key={label} className="flex items-center gap-3 lg:pl-6 first:lg:pl-0 group opacity-70 hover:opacity-100 hover:-translate-y-0.5 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
+                <Icon className="h-5 w-5 text-gold shrink-0 transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
+                <span className="text-xs font-medium leading-snug text-white/80 group-hover:text-white max-w-[160px] transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">{label}</span>
               </div>
             ))}
           </div>
