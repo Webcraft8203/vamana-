@@ -92,13 +92,20 @@ export const About = () => {
           </div>
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: "400ms" }}>
+          <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-up" style={{ animationDelay: "400ms" }}>
             <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
               <a href="#contact">Talk to an Advisor</a>
             </Button>
             <Button variant="outline" size="lg" asChild className="hover:-translate-y-1 hover:bg-secondary/50 hover:shadow-md transition-all duration-300">
               <a href="#services">Learn More</a>
             </Button>
+            <a
+              href="#leadership"
+              className="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-gold transition-colors"
+            >
+              Meet our leadership
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </a>
           </div>
 
           {/* Stats Row */}
