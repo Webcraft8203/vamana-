@@ -56,7 +56,17 @@ export const Navbar = () => {
       }`}
     >
       <nav className="container-x flex h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
+        <Link
+          to="/"
+          onClick={(e) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="flex items-center gap-2 shrink-0"
+          aria-label="Go to top"
+        >
           <img src={logo} alt="Vamana Insurance Broking" className="h-9 sm:h-10 w-auto" />
         </Link>
 
