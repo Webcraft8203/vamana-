@@ -34,6 +34,7 @@ const Index = () => {
         <main>
           <Hero />
           <About />
+          <Leadership />
           <VisionMission />
           <WhyVamana />
           <Services />
