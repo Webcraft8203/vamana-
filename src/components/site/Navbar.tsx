@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown, Shield, FileCheck, Briefcase } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Shield, FileCheck, Briefcase, Sparkles, BadgeCheck, Headset, Clock } from "lucide-react";
 import logo from "@/assets/vamana-logo.png";
 import { Button } from "@/components/ui/button";
 
