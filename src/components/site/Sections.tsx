@@ -202,8 +202,14 @@ export const Leadership = () => {
       if (scrollRef.current) {
         let nextIndex = activeIndex + 1;
         if (nextIndex >= team.length) nextIndex = 0;
-        const child = scrollRef.current.children[nextIndex];
-        if (child) child.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const child = scrollRef.current.children[nextIndex] as HTMLElement;
+        if (child) {
+          const container = scrollRef.current;
+          const childLeft = child.getBoundingClientRect().left;
+          const containerLeft = container.getBoundingClientRect().left;
+          const scrollPos = container.scrollLeft + childLeft - containerLeft - (container.clientWidth - child.clientWidth) / 2;
+          container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+        }
       }
     }, 4500);
     return () => clearInterval(interval);
@@ -325,8 +331,14 @@ export const Leadership = () => {
                 onClick={() => {
                   setActiveIndex(i);
                   if (scrollRef.current) {
-                    const child = scrollRef.current.children[i];
-                    if (child) child.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    const child = scrollRef.current.children[i] as HTMLElement;
+                    if (child) {
+                      const container = scrollRef.current;
+                      const childLeft = child.getBoundingClientRect().left;
+                      const containerLeft = container.getBoundingClientRect().left;
+                      const scrollPos = container.scrollLeft + childLeft - containerLeft - (container.clientWidth - child.clientWidth) / 2;
+                      container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+                    }
                   }
                 }}
                 aria-label={`Go to slide ${i + 1}`}
