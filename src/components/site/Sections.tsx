@@ -95,7 +95,7 @@ export const About = () => {
           {/* CTAs */}
           <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-up" style={{ animationDelay: "400ms" }}>
             <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(212,175,55,0.5)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-              <a href="#contact">Talk to an Advisor</a>
+              <a href="tel:+917083550101">Talk to an Advisor</a>
             </Button>
             <Button variant="outline" size="lg" asChild className="hover:-translate-y-1 hover:bg-secondary/50 hover:shadow-sm transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <a href="#services">Learn More</a>
@@ -406,7 +406,7 @@ export const VisionMission = () => {
         {/* CTA Section */}
         <div className="mt-16 flex justify-center animate-fade-up" style={{ animationDelay: "500ms" }}>
           <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(212,175,55,0.5)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-            <a href="#contact">Talk to an Advisor</a>
+            <a href="tel:+917083550101">Talk to an Advisor</a>
           </Button>
         </div>
       </div>
@@ -767,7 +767,7 @@ const ServiceModal = ({ activeService, onClose }: { activeService: any; onClose:
               {/* CTA Section */}
               <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-4 animate-stagger" style={{ animationDelay: `1000ms` }}>
                 <Button variant="gold" size="xl" asChild className="w-full sm:w-auto shadow-[0_8px_20px_rgba(212,175,55,0.2)] hover:-translate-y-1 hover:shadow-[0_15px_30px_-5px_rgba(212,175,55,0.4)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] text-sm font-bold">
-                  <a href="#contact" onClick={onClose}>Talk to an Advisor <ArrowRight className="h-4 w-4 ml-2" /></a>
+                  <a href="tel:+917083550101" onClick={onClose}>Talk to an Advisor <ArrowRight className="h-4 w-4 ml-2" /></a>
                 </Button>
                 <Button variant="outlineLight" size="xl" asChild className="w-full sm:w-auto hover:bg-white/10 hover:-translate-y-1 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] text-sm font-bold border-white/30 hover:border-white/60">
                   <a href="#quote" onClick={onClose}>Get Free Consultation</a>

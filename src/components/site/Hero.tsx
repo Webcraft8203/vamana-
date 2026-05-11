@@ -285,11 +285,11 @@ export const Hero = () => {
                   <div className="relative group/cta inline-block w-full sm:w-auto">
                     <div className="absolute inset-0 bg-gold/20 blur-xl rounded-full opacity-40 group-hover/cta:opacity-80 transition-opacity duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none" />
                     <Button variant="gold" size="lg" asChild className="relative w-full sm:w-auto font-semibold shadow-none hover:-translate-y-1 hover:shadow-[0_8px_20px_-4px_rgba(212,175,55,0.4)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-                      <a href="#contact">{slides[index].cta1}</a>
+                      <a href="tel:+917083550101">{slides[index].cta1}</a>
                     </Button>
                   </div>
                   <Button variant="ghost" size="lg" asChild className="w-full sm:w-auto text-white/70 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/20 hover:shadow-[0_8px_20px_-4px_rgba(255,255,255,0.05)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] font-semibold">
-                    <a href="#contact">{slides[index].cta2}</a>
+                    <a href="tel:+917083550101">{slides[index].cta2}</a>
                   </Button>
                 </div>
                 <div className="mt-4 flex items-center justify-center sm:justify-start gap-2 text-xs font-medium text-white/50">

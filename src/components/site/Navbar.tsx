@@ -16,7 +16,7 @@ const links = [
   { label: "Services", href: "/#services", dropdown: true },
   { label: "How it works", href: "/#how" },
   { label: "Insights", href: "/#insights" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "tel:+917083550101" },
 ];
 
 export const Navbar = () => {
@@ -148,7 +148,7 @@ export const Navbar = () => {
             <Phone className="h-4 w-4 text-gold" /> +91 7083550101
           </a>
           <Button variant="gold" size="sm" asChild className="transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(212,175,55,0.3)] hover:brightness-105">
-            <a href="/#contact" onClick={(e) => handleHashLink(e, "/#contact")}>Get Free Quote</a>
+            <a href="tel:+917083550101" onClick={(e) => handleHashLink(e, "tel:+917083550101")}>Get Free Quote</a>
           </Button>
         </div>
 
@@ -201,7 +201,7 @@ export const Navbar = () => {
               ),
             )}
             <Button variant="gold" className="mt-4 w-full" asChild>
-              <a href="/#contact" onClick={(e) => handleHashLink(e, "/#contact")}>Get Free Quote</a>
+              <a href="tel:+917083550101" onClick={(e) => handleHashLink(e, "tel:+917083550101")}>Get Free Quote</a>
             </Button>
           </div>
         </div>
