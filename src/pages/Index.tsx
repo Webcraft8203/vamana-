@@ -42,6 +42,7 @@ const Index = () => {
           <HowItWorks />
           <FeatureHighlight />
           <Insights />
+          <PremiumContact />
           <FinalCTA />
         </main>
         <Footer />
