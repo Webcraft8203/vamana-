@@ -3,7 +3,6 @@ import { Preloader } from "@/components/site/Preloader";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { About, Leadership, VisionMission, WhyVamana, Services, HowItWorks, FeatureHighlight, Insights, FinalCTA, Footer } from "@/components/site/Sections";
-import { PremiumContact } from "@/components/site/PremiumContact";
 import { FloatingActions } from "@/components/site/FloatingActions";
 
 
@@ -42,7 +41,6 @@ const Index = () => {
           <HowItWorks />
           <FeatureHighlight />
           <Insights />
-          <PremiumContact />
           <FinalCTA />
         </main>
         <Footer />
