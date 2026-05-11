@@ -1070,33 +1070,6 @@ export const Insights = () => {
   );
 };
 
-/* ---------- FINAL CTA ---------- */
-export const FinalCTA = () => (
-  <section id="contact" className="py-20 sm:py-28">
-    <div className="container-x">
-      <div className="relative overflow-hidden rounded-3xl bg-primary p-10 sm:p-16 text-white shadow-lift">
-        <div className="absolute inset-0 grid-faint opacity-30 pointer-events-none" />
-        <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-gold/25 blur-3xl pointer-events-none" />
-        <div className="relative max-w-2xl">
-          <h2 className="font-display text-3xl sm:text-5xl font-extrabold leading-tight">
-            Let's secure <span className="text-gradient-gold">what matters most.</span>
-          </h2>
-          <p className="mt-4 text-white/75 text-base sm:text-lg">
-            Get a free, no-obligation consultation with a Vamana advisor. We'll review your existing cover and show you exactly where you stand.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Button variant="gold" size="xl" asChild className="hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(212,175,55,0.5)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-              <a href="tel:+917083550101">Call an Advisor <ArrowRight className="h-4 w-4 ml-1.5" /></a>
-            </Button>
-            <Button variant="outlineLight" size="xl" asChild className="hover:bg-white/10 hover:-translate-y-1 border-white/30 hover:border-white/60 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-              <a href="mailto:solutions@vamanainsurance.in">Email Us</a>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
 
 /* ---------- FOOTER ---------- */
 const legalDocs: Record<string, { title: string; body: string }> = {
