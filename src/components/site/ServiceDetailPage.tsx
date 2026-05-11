@@ -61,7 +61,7 @@ export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: S
               </div>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/20 transition-all duration-300">
-                  <Link to="/#contact">{cta} <ArrowRight className="h-4 w-4" /></Link>
+                  <Link to="tel:+917083550101">{cta} <ArrowRight className="h-4 w-4" /></Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="hover:-translate-y-1 transition-all duration-300">
                   <Link to="/#services">All Services</Link>
@@ -121,7 +121,7 @@ export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: S
               <p className="mt-2 text-white/80">Speak with a Vamana advisor — no obligation, no pressure.</p>
             </div>
             <Button variant="gold" size="lg" asChild className="hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-              <Link to="/#contact">{cta} <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="tel:+917083550101">{cta} <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           </div>
         </section>
