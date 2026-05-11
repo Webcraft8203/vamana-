@@ -144,8 +144,8 @@ export const Navbar = () => {
         </ul>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+910000000000" className="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-            <Phone className="h-4 w-4 text-gold" /> +91 00000 00000
+          <a href="tel:+917083550101" className="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
+            <Phone className="h-4 w-4 text-gold" /> +91 7083550101
           </a>
           <Button variant="gold" size="sm" asChild className="transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(212,175,55,0.3)] hover:brightness-105">
             <a href="/#contact" onClick={(e) => handleHashLink(e, "/#contact")}>Get Free Quote</a>

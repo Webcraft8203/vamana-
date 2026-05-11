@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Phone, Mail, Instagram, Linkedin, MessageCircle, ArrowUp, Plus } from "lucide-react";
 
-const PHONE = "+910000000000";
-const WHATSAPP = "910000000000";
+const PHONE = "+917083550101";
+const WHATSAPP = "917083550101";
 const EMAIL = "solutions@vamanainsurance.in";
 const INSTAGRAM = "https://instagram.com/";
 const LINKEDIN = "https://linkedin.com/";

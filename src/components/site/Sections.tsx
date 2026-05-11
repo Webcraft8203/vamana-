@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Award, ShieldCheck, Users, Handshake, HeartPulse, Car, Plane, Building2, Shield, Anchor, Truck, Wrench, Factory, Boxes, Target, Eye, Sparkles, Scale, Headphones, ArrowRight, FileCheck, Clock, Lock, Mail, Phone, Briefcase, X, CheckCircle2, Settings } from "lucide-react";
+import { Award, ShieldCheck, Users, Handshake, HeartPulse, Car, Plane, Building2, Shield, Anchor, Truck, Wrench, Factory, Boxes, Target, Eye, Sparkles, Scale, Headphones, ArrowRight, FileCheck, Clock, Lock, Mail, Phone, Briefcase, X, CheckCircle2, Settings, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/site/Modal";
 import advisorImg from "@/assets/feature-advisor.jpg";
@@ -1086,7 +1086,7 @@ export const FinalCTA = () => (
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <Button variant="gold" size="xl" asChild className="hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(212,175,55,0.5)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-              <a href="tel:+910000000000">Call an Advisor <ArrowRight className="h-4 w-4 ml-1.5" /></a>
+              <a href="tel:+917083550101">Call an Advisor <ArrowRight className="h-4 w-4 ml-1.5" /></a>
             </Button>
             <Button variant="outlineLight" size="xl" asChild className="hover:bg-white/10 hover:-translate-y-1 border-white/30 hover:border-white/60 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
               <a href="mailto:solutions@vamanainsurance.in">Email Us</a>
@@ -1145,10 +1145,19 @@ export const Footer = () => {
           </div>
           <div>
             <h4 className="font-display font-bold text-white">Contact</h4>
-            <ul className="mt-4 space-y-2.5 text-sm text-white/70">
-              <li>+91 00000 00000</li>
-              <li>solutions@vamanainsurance.in</li>
-              <li>India</li>
+            <ul className="mt-4 space-y-3.5 text-sm text-white/70">
+              <li className="flex items-start gap-3">
+                <Phone className="h-4 w-4 mt-1 shrink-0 text-gold/80" />
+                <a href="tel:+917083550101" className="hover:text-gold transition-colors duration-300">+91 7083550101</a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail className="h-4 w-4 mt-1 shrink-0 text-gold/80" />
+                <a href="mailto:solutions@vamanainsurance.in" className="hover:text-gold transition-colors duration-300">solutions@vamanainsurance.in</a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="h-4 w-4 mt-1 shrink-0 text-gold/80" />
+                <span>A1-1211-12, Boulevard Towers,<br />Sadhu Vaswani Circle, Pune 411001</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -1179,7 +1188,7 @@ export const Footer = () => {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-gold"><Phone className="h-5 w-5" /></div>
               <div>
                 <p className="text-xs text-muted-foreground">Phone</p>
-                <a href="tel:+910000000000" className="text-sm font-semibold text-primary hover:text-gold">+91 00000 00000</a>
+                <a href="tel:+917083550101" className="text-sm font-semibold text-primary hover:text-gold">+91 7083550101</a>
               </div>
             </div>
           </div>
