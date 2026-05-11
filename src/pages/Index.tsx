@@ -41,7 +41,7 @@ const Index = () => {
           <HowItWorks />
           <FeatureHighlight />
           <Insights />
-          <FinalCTA />
+          
         </main>
         <Footer />
         <FloatingActions />
