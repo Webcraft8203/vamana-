@@ -1070,6 +1070,60 @@ export const Insights = () => {
   );
 };
 
+/* ---------- FINAL CTA ---------- */
+export const FinalCTA = () => {
+  return (
+    <section className="relative py-24 sm:py-32 bg-white overflow-hidden">
+      <div className="container-x relative z-10">
+        <style>{`
+          @keyframes cta-mesh {
+            0% { transform: scale(1) translate(0, 0); }
+            33% { transform: scale(1.05) translate(2%, -2%); }
+            66% { transform: scale(0.95) translate(-2%, 2%); }
+            100% { transform: scale(1) translate(0, 0); }
+          }
+          .animate-cta-mesh {
+            animation: cta-mesh 15s ease-in-out infinite;
+            will-change: transform;
+          }
+        `}</style>
+
+        <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] bg-primary border border-white/10 shadow-[0_20px_60px_rgba(7,27,77,0.3)] px-6 py-16 sm:p-20 text-center animate-fade-up">
+          
+          {/* Premium Inner Depth & Lighting */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent pointer-events-none" />
+          <div className="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] rounded-[2rem] sm:rounded-[2.5rem] pointer-events-none" />
+          
+          {/* Mesh & Grid Effects */}
+          <div className="absolute inset-0 grid-faint opacity-[0.05] pointer-events-none" />
+          <div className="absolute -top-[50%] -right-[10%] w-[80%] h-[150%] bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.15)_0%,transparent_60%)] animate-cta-mesh pointer-events-none blur-[60px]" />
+          <div className="absolute -bottom-[50%] -left-[10%] w-[80%] h-[150%] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.15)_0%,transparent_60%)] animate-cta-mesh pointer-events-none blur-[60px]" style={{ animationDelay: "-7.5s" }} />
+
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.15] text-white tracking-tight drop-shadow-sm">
+              Let’s secure <span className="text-gradient-gold drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">what matters most.</span>
+            </h2>
+            <p className="mt-6 text-lg sm:text-[1.15rem] text-white/70 leading-relaxed font-medium max-w-2xl mx-auto">
+              Get a free, no-obligation consultation with a Vamana advisor. We'll review your existing cover and show you exactly where you stand.
+            </p>
+            
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
+              <Button variant="gold" size="xl" asChild className="w-full sm:w-auto group hover:-translate-y-1 hover:shadow-[0_15px_30px_-5px_rgba(212,175,55,0.4)] transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] font-bold text-base px-8">
+                <a href="tel:+917083550101">
+                  Call an Advisor 
+                  <ArrowRight className="h-4 w-4 ml-2 transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-x-1" />
+                </a>
+              </Button>
+              <Button variant="outlineLight" size="xl" asChild className="w-full sm:w-auto hover:bg-white/10 hover:-translate-y-1 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] font-bold text-base px-8 border-white/20 hover:border-white/50 shadow-sm">
+                <a href="mailto:solutions@vamanainsurance.in">Email Us</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* ---------- FOOTER ---------- */
 const legalDocs: Record<string, { title: string; body: string }> = {
@@ -1085,17 +1139,19 @@ export const Footer = () => {
   const active = openLegal ? legalDocs[openLegal] : null;
 
   return (
-    <footer className="bg-primary text-white/80 pt-16 pb-8">
-      <div className="container-x">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <div className="lg:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
-            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="inline-flex items-center justify-center bg-white p-3 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl shadow-sm transition-transform duration-300 hover:-translate-y-1">
-              <img src={logo} alt="Vamana Insurance" className="h-8 sm:h-10 lg:h-11 w-auto object-contain block" loading="lazy" />
-            </a>
-            <p className="text-sm mt-6 leading-relaxed text-white/65 max-w-sm">
-              Independent insurance advisory built on transparency, expertise and lifelong client relationships.
-            </p>
-          </div>
+    <>
+      <FinalCTA />
+      <footer className="bg-primary text-white/80 pt-16 pb-8">
+        <div className="container-x">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10">
+            <div className="lg:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
+              <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="inline-flex items-center justify-center bg-white p-3 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl shadow-sm transition-transform duration-300 hover:-translate-y-1">
+                <img src={logo} alt="Vamana Insurance" className="h-8 sm:h-10 lg:h-11 w-auto object-contain block" loading="lazy" />
+              </a>
+              <p className="text-sm mt-6 leading-relaxed text-white/65 max-w-sm">
+                Independent insurance advisory built on transparency, expertise and lifelong client relationships.
+              </p>
+            </div>
           <div>
             <h4 className="font-display font-bold text-white">Company</h4>
             <ul className="mt-4 space-y-2.5 text-sm">
@@ -1170,7 +1226,8 @@ export const Footer = () => {
           </Button>
         </div>
       </Modal>
-    </footer>
+      </footer>
+    </>
   );
 };
 
