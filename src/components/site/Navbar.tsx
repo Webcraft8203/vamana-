@@ -79,7 +79,7 @@ export const Navbar = () => {
         scrolled ? "bg-white/95 backdrop-blur-md" : "bg-white"
       }`}
     >
-      <nav className="container-x flex h-20 items-center justify-between">
+      <nav className="container-x relative z-20 flex h-20 items-center justify-between">
         <Link
           to="/"
           onClick={(e) => {
@@ -107,18 +107,19 @@ export const Navbar = () => {
                     <ChevronDown className="h-3.5 w-3.5 transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:rotate-180" />
                   </button>
                   {/* Dropdown */}
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[320px] opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-                    <div className="rounded-2xl bg-white/95 backdrop-blur-xl shadow-2xl border border-gray-100 ring-1 ring-black/5 overflow-hidden p-2">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[340px] opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-[100]">
+                    <div className="rounded-[24px] bg-white/85 backdrop-blur-[18px] shadow-[0_20px_60px_rgba(0,0,0,0.18)] border border-white/60 p-2.5 relative ring-1 ring-black/5">
+                      <div className="absolute inset-0 rounded-[24px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.8)] pointer-events-none" />
                       {services.map((s) => {
                         const Icon = s.icon;
                         return (
                           <Link
                             key={s.href}
                             to={s.href}
-                            className="flex items-start gap-3 p-3 rounded-xl hover:bg-secondary/50 hover:shadow-sm transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] group/item"
+                            className="relative flex items-start gap-3.5 p-3.5 rounded-[16px] hover:bg-secondary/60 hover:shadow-sm transition-all duration-300 group/item z-10"
                           >
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary group-hover/item:bg-primary group-hover/item:text-gold transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
-                              <Icon className="h-5 w-5" />
+                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary group-hover/item:bg-primary group-hover/item:text-gold transition-all duration-300">
+                              <Icon className="h-5 w-5 transition-transform duration-300 group-hover/item:scale-110" />
                             </div>
                             <div>
                               <p className="text-sm font-semibold text-primary">{s.label}</p>
@@ -208,7 +209,7 @@ export const Navbar = () => {
       )}
       {/* Premium Trust Bar (below navigation) */}
       <div
-        className="bg-[#071B4D]/95 backdrop-blur-xl relative overflow-hidden border-t border-white/10"
+        className="bg-[#071B4D]/95 backdrop-blur-xl relative z-10 overflow-hidden border-t border-white/10"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
