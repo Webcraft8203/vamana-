@@ -1,1 +1,15 @@
-//versal code
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "http"
+        }
+      ],
+      "destination": "https://www.vamanainsurance.in/$1",
+      "permanent": true
+    }
+  ]
+}
