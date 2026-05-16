@@ -76,7 +76,7 @@ export const About = () => {
               <ShieldCheck className="h-3.5 w-3.5 text-gold" /> IRDAI Licensed Broker
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/60 border border-border/50 px-3 py-1.5 text-xs font-semibold text-primary shadow-sm">
-              <Briefcase className="h-3.5 w-3.5 text-gold" /> 100+ Years Experience
+              <Briefcase className="h-3.5 w-3.5 text-gold" /> 100+ Years Total Knowledge Pool
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/60 border border-border/50 px-3 py-1.5 text-xs font-semibold text-primary shadow-sm">
               <Handshake className="h-3.5 w-3.5 text-gold" /> Client-First Advisory
