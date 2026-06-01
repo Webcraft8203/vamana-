@@ -3,6 +3,7 @@ import { ChevronRight, ShieldCheck, Eye, Headphones, ArrowRight } from "lucide-r
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Sections";
 import { FloatingActions } from "@/components/site/FloatingActions";
+import { SEO } from "@/components/site/SEO";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
@@ -12,6 +13,10 @@ interface ServiceDetailPageProps {
   cta: string;
   image: string;
   imageAlt: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string;
+  path: string;
 }
 
 const features = [
