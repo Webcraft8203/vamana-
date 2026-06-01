@@ -33,26 +33,28 @@ export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt, seo
   const finalTitle = seoTitle ?? `${title} — Vamana Insurance Broking India`;
   const finalDesc = seoDescription ?? paragraphs[0]?.slice(0, 158) ?? "";
 
+  const SITE = "https://www.vamanainsurance.in";
   const serviceLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: title,
+    serviceType: title,
     provider: {
       "@type": "InsuranceAgency",
       name: "Vamana Insurance Broking Pvt. Ltd.",
-      url: "https://vamanainsurance.com/",
+      url: `${SITE}/`,
     },
-    areaServed: "IN",
+    areaServed: { "@type": "Country", name: "India" },
     description: finalDesc,
-    url: `https://vamanainsurance.com${path}`,
+    url: `${SITE}${path}`,
   };
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://vamanainsurance.com/" },
-      { "@type": "ListItem", position: 2, name: "Services", item: "https://vamanainsurance.com/#services" },
-      { "@type": "ListItem", position: 3, name: title, item: `https://vamanainsurance.com${path}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${SITE}/#services` },
+      { "@type": "ListItem", position: 3, name: title, item: `${SITE}${path}` },
     ],
   };
 
