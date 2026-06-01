@@ -25,15 +25,42 @@ const features = [
   { icon: Headphones, title: "Dedicated Support", desc: "A single point of contact from onboarding through claim disbursal." },
 ];
 
-export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt }: ServiceDetailPageProps) => {
+export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt, seoTitle, seoDescription, seoKeywords, path }: ServiceDetailPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `${title} — Vamana Insurance`;
   }, [title]);
+
+  const finalTitle = seoTitle ?? `${title} — Vamana Insurance Broking India`;
+  const finalDesc = seoDescription ?? paragraphs[0]?.slice(0, 158) ?? "";
+
+  const serviceLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: title,
+    provider: {
+      "@type": "InsuranceAgency",
+      name: "Vamana Insurance Broking Pvt. Ltd.",
+      url: "https://vamanainsurance.com/",
+    },
+    areaServed: "IN",
+    description: finalDesc,
+    url: `https://vamanainsurance.com${path}`,
+  };
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vamanainsurance.com/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://vamanainsurance.com/#services" },
+      { "@type": "ListItem", position: 3, name: title, item: `https://vamanainsurance.com${path}` },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title={finalTitle} description={finalDesc} path={path} keywords={seoKeywords} jsonLd={[serviceLd, breadcrumbLd]} />
       <Navbar />
+
       <main className="pt-[124px] lg:pt-[136px]">
         {/* Breadcrumb */}
         <div className="bg-secondary/40 border-b border-border/60">
