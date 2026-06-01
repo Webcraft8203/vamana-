@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://vamanainsurance.com/</loc>
+    <loc>https://www.vamanainsurance.in/</loc>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://www.vamanainsurance.in/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vamanainsurance.in/" />
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://vamanainsurance.com/services/risk-management</loc>
+    <loc>https://www.vamanainsurance.in/services/risk-management</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vamanainsurance.com/services/claims-management</loc>
+    <loc>https://www.vamanainsurance.in/services/claims-management</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vamanainsurance.com/services/insurance-portfolio-management</loc>
+    <loc>https://www.vamanainsurance.in/services/insurance-portfolio-management</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

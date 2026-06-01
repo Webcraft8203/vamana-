@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /lovable/
 
-Sitemap: https://vamanainsurance.com/sitemap.xml
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://www.vamanainsurance.in/sitemap.xml
