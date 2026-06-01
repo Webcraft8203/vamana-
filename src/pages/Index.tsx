@@ -4,6 +4,8 @@ import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { About, Leadership, VisionMission, WhyVamana, Services, HowItWorks, FeatureHighlight, Insights, Footer } from "@/components/site/Sections";
 import { FloatingActions } from "@/components/site/FloatingActions";
+import { SEO } from "@/components/site/SEO";
+
 
 
 const Index = () => {
