@@ -7,8 +7,16 @@ import { SEO } from "@/components/site/SEO";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
+interface RelatedService {
+  title: string;
+  href: string;
+  desc: string;
+}
+
 interface ServiceDetailPageProps {
   title: string;
+  heading?: string;
+  tagline?: string;
   paragraphs: string[];
   cta: string;
   image: string;
@@ -17,12 +25,13 @@ interface ServiceDetailPageProps {
   seoDescription?: string;
   seoKeywords?: string;
   path: string;
+  relatedServices?: RelatedService[];
 }
 
 const features = [
-  { icon: ShieldCheck, title: "Expert Advisory", desc: "Decades of insurance and risk-advisory expertise on every engagement." },
-  { icon: Eye, title: "Transparent Process", desc: "Clear gap analysis, honest recommendations and zero hidden fine print." },
-  { icon: Headphones, title: "Dedicated Support", desc: "A single point of contact from onboarding through claim disbursal." },
+  { icon: ShieldCheck, title: "Expert Insurance Advisory in India", desc: "Decades of IRDAI-aligned insurance and risk-advisory expertise on every corporate and personal engagement." },
+  { icon: Eye, title: "Transparent Process & Honest Pricing", desc: "Clear gap analysis, honest recommendations and zero hidden fine print — across health, motor, marine, property and liability insurance." },
+  { icon: Headphones, title: "Dedicated Claim Support Pan-India", desc: "A single point of contact from onboarding through claim disbursal — Mumbai, Delhi, Bangalore, Pune, Hyderabad, Chennai." },
 ];
 
 export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt, seoTitle, seoDescription, seoKeywords, path }: ServiceDetailPageProps) => {
