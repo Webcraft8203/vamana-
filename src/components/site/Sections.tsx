@@ -28,7 +28,7 @@ export const About = () => {
           <div className="absolute inset-0 bg-gold/15 blur-[80px] rounded-full transform -translate-x-4 translate-y-4" />
           
           <div className="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-border group h-full">
-            <img src={aboutImg} alt="Vamana team in consultation" className="w-full h-[500px] lg:h-full min-h-[500px] lg:min-h-[600px] object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.03]" loading="lazy" width={1024} height={1024} />
+            <img src={aboutImg} alt="Vamana Insurance Broking advisory team in client consultation — IRDAI licensed insurance broker in India" className="w-full h-[500px] lg:h-full min-h-[500px] lg:min-h-[600px] object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.03]" loading="lazy" width={1024} height={1024} />
             
             {/* Subtle Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent pointer-events-none opacity-90" />

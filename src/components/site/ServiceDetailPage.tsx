@@ -7,8 +7,16 @@ import { SEO } from "@/components/site/SEO";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
+interface RelatedService {
+  title: string;
+  href: string;
+  desc: string;
+}
+
 interface ServiceDetailPageProps {
   title: string;
+  heading?: string;
+  tagline?: string;
   paragraphs: string[];
   cta: string;
   image: string;
@@ -17,15 +25,16 @@ interface ServiceDetailPageProps {
   seoDescription?: string;
   seoKeywords?: string;
   path: string;
+  relatedServices?: RelatedService[];
 }
 
 const features = [
-  { icon: ShieldCheck, title: "Expert Advisory", desc: "Decades of insurance and risk-advisory expertise on every engagement." },
-  { icon: Eye, title: "Transparent Process", desc: "Clear gap analysis, honest recommendations and zero hidden fine print." },
-  { icon: Headphones, title: "Dedicated Support", desc: "A single point of contact from onboarding through claim disbursal." },
+  { icon: ShieldCheck, title: "Expert Insurance Advisory in India", desc: "Decades of IRDAI-aligned insurance and risk-advisory expertise on every corporate and personal engagement." },
+  { icon: Eye, title: "Transparent Process & Honest Pricing", desc: "Clear gap analysis, honest recommendations and zero hidden fine print — across health, motor, marine, property and liability insurance." },
+  { icon: Headphones, title: "Dedicated Claim Support Pan-India", desc: "A single point of contact from onboarding through claim disbursal — Mumbai, Delhi, Bangalore, Pune, Hyderabad, Chennai." },
 ];
 
-export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt, seoTitle, seoDescription, seoKeywords, path }: ServiceDetailPageProps) => {
+export const ServiceDetailPage = ({ title, heading, tagline, paragraphs, cta, image, imageAlt, seoTitle, seoDescription, seoKeywords, path, relatedServices }: ServiceDetailPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [title]);
@@ -83,10 +92,13 @@ export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt, seo
 
           <div className="container-x relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="animate-fade-up">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Our Services</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Our Services · IRDAI Licensed Broker</p>
               <h1 className="mt-3 font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] text-primary">
-                {title}
+                {heading ?? `${title} Services in India`}
               </h1>
+              {tagline && (
+                <p className="mt-4 text-lg sm:text-xl font-semibold text-primary/80">{tagline}</p>
+              )}
               <div className="mt-6 h-1 w-20 bg-gradient-to-r from-gold to-transparent rounded-full" />
               <div className="mt-8 space-y-5">
                 {paragraphs.map((p, i) => (
@@ -145,6 +157,39 @@ export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt, seo
             </div>
           </div>
         </section>
+
+        {/* Related Services — internal linking for SEO */}
+        {relatedServices && relatedServices.length > 0 && (
+          <section className="py-20 sm:py-24 border-t border-border/40">
+            <div className="container-x">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Explore More</p>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold text-primary leading-tight">
+                  Related Insurance Services in India
+                </h2>
+                <p className="mt-4 text-muted-foreground">
+                  Discover other IRDAI-licensed insurance broking services from Vamana — built for individuals, SMEs and corporates across India.
+                </p>
+              </div>
+              <div className="mt-12 grid md:grid-cols-3 gap-6">
+                {relatedServices.map((s) => (
+                  <Link
+                    key={s.href}
+                    to={s.href}
+                    className="group bg-white rounded-2xl border border-border/60 p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-gold/40 transition-all duration-300"
+                  >
+                    <h3 className="font-display font-bold text-xl text-primary group-hover:text-gold transition-colors">{s.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-gold transition-colors">
+                      Learn more <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
 
         {/* CTA Strip */}
         <section className="py-16 bg-primary text-white relative overflow-hidden">
