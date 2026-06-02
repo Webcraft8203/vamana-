@@ -158,6 +158,39 @@ export const ServiceDetailPage = ({ title, heading, tagline, paragraphs, cta, im
           </div>
         </section>
 
+        {/* Related Services — internal linking for SEO */}
+        {relatedServices && relatedServices.length > 0 && (
+          <section className="py-20 sm:py-24 border-t border-border/40">
+            <div className="container-x">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Explore More</p>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold text-primary leading-tight">
+                  Related Insurance Services in India
+                </h2>
+                <p className="mt-4 text-muted-foreground">
+                  Discover other IRDAI-licensed insurance broking services from Vamana — built for individuals, SMEs and corporates across India.
+                </p>
+              </div>
+              <div className="mt-12 grid md:grid-cols-3 gap-6">
+                {relatedServices.map((s) => (
+                  <Link
+                    key={s.href}
+                    to={s.href}
+                    className="group bg-white rounded-2xl border border-border/60 p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-gold/40 transition-all duration-300"
+                  >
+                    <h3 className="font-display font-bold text-xl text-primary group-hover:text-gold transition-colors">{s.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-gold transition-colors">
+                      Learn more <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+
         {/* CTA Strip */}
         <section className="py-16 bg-primary text-white relative overflow-hidden">
           <div className="absolute inset-0 grid-faint opacity-[0.08] pointer-events-none" />
