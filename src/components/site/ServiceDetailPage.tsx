@@ -92,10 +92,13 @@ export const ServiceDetailPage = ({ title, heading, tagline, paragraphs, cta, im
 
           <div className="container-x relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="animate-fade-up">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Our Services</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Our Services · IRDAI Licensed Broker</p>
               <h1 className="mt-3 font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] text-primary">
-                {title}
+                {heading ?? `${title} Services in India`}
               </h1>
+              {tagline && (
+                <p className="mt-4 text-lg sm:text-xl font-semibold text-primary/80">{tagline}</p>
+              )}
               <div className="mt-6 h-1 w-20 bg-gradient-to-r from-gold to-transparent rounded-full" />
               <div className="mt-8 space-y-5">
                 {paragraphs.map((p, i) => (
