@@ -34,7 +34,7 @@ const features = [
   { icon: Headphones, title: "Dedicated Claim Support Pan-India", desc: "A single point of contact from onboarding through claim disbursal — Mumbai, Delhi, Bangalore, Pune, Hyderabad, Chennai." },
 ];
 
-export const ServiceDetailPage = ({ title, paragraphs, cta, image, imageAlt, seoTitle, seoDescription, seoKeywords, path }: ServiceDetailPageProps) => {
+export const ServiceDetailPage = ({ title, heading, tagline, paragraphs, cta, image, imageAlt, seoTitle, seoDescription, seoKeywords, path, relatedServices }: ServiceDetailPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [title]);
