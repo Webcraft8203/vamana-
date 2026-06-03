@@ -30,12 +30,19 @@ export const Breadcrumbs = ({ items, siteUrl = DEFAULT_SITE, className }: Breadc
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: trail.map((item, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: item.name,
-      item: `${siteUrl}${item.href ?? ""}`,
-    })),
+    itemListElement: trail.map((item, i) => {
+      // Google allows (and recommends) omitting `item` for the final
+      // crumb since it represents the current page. For intermediate
+      // crumbs the visible link target and the JSON-LD `item` MUST
+      // resolve to the same URL — both are built from `item.href`.
+      const entry: Record<string, unknown> = {
+        "@type": "ListItem",
+        position: i + 1,
+        name: item.name,
+      };
+      if (item.href) entry.item = `${siteUrl}${item.href}`;
+      return entry;
+    }),
   };
 
   return (
