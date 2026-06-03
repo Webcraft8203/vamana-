@@ -58,31 +58,24 @@ export const ServiceDetailPage = ({ title, heading, tagline, paragraphs, cta, im
     description: finalDesc,
     url: `${SITE}${path}`,
   };
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
-      { "@type": "ListItem", position: 2, name: "Services", item: `${SITE}/#services` },
-      { "@type": "ListItem", position: 3, name: title, item: `${SITE}${path}` },
-    ],
-  };
+  // Keyword-aware breadcrumb label: prefer the SEO heading, fall back to title.
+  const crumbLabel = heading ?? title;
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title={finalTitle} description={finalDesc} path={path} keywords={seoKeywords} jsonLd={[serviceLd, breadcrumbLd]} />
+      <SEO title={finalTitle} description={finalDesc} path={path} keywords={seoKeywords} jsonLd={[serviceLd]} />
       <Navbar />
 
       <main className="pt-[124px] lg:pt-[136px]">
-        {/* Breadcrumb */}
+        {/* Keyword-aware breadcrumb trail + BreadcrumbList JSON-LD */}
         <div className="bg-secondary/40 border-b border-border/60">
-          <div className="container-x py-6 flex items-center gap-2 text-sm">
-            <Link to="/" className="font-medium text-muted-foreground hover:text-primary transition-colors">Home</Link>
-            <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
-            <Link to="/#services" className="font-medium text-muted-foreground hover:text-primary transition-colors">Services</Link>
-            <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
-            <span className="font-semibold text-primary">{title}</span>
-          </div>
+          <Breadcrumbs
+            siteUrl={SITE}
+            items={[
+              { name: "Insurance Services", href: "/#services" },
+              { name: crumbLabel },
+            ]}
+          />
         </div>
 
         {/* Hero */}
